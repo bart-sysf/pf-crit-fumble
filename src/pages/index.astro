@@ -88,6 +88,7 @@ const fumbleData = yaml.load(fs.readFileSync('src/data/fumbles.yaml', 'utf8')) a
 			function showScreen(id) {
 				document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
 				document.getElementById(id).classList.add('active');
+				document.body.style.overflow = id === 'screen-result' ? 'auto' : 'hidden';
 			}
 
 			function runShuffleAnimation(type) {
@@ -232,10 +233,9 @@ const fumbleData = yaml.load(fs.readFileSync('src/data/fumbles.yaml', 'utf8')) a
 				font-family: 'Crimson Text', Georgia, serif;
 				background: #1a1a2e url('/images/bg.png') center center / cover no-repeat fixed;
 				color: #e0d8c8;
-				min-height: 100vh;
+				margin: 0;
 				display: flex;
 				justify-content: center;
-				align-items: center;
 				overflow: hidden;
 			}
 
@@ -260,6 +260,8 @@ const fumbleData = yaml.load(fs.readFileSync('src/data/fumbles.yaml', 'utf8')) a
 				width: 100%;
 				max-width: 800px;
 				padding: 2rem;
+				min-height: 100vh;
+				box-sizing: border-box;
 				animation: fadeIn 0.4s ease;
 			}
 
