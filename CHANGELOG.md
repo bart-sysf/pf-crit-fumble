@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.7...v1.0.8) (2026-04-16)
+
+
+### Bug Fixes
+
+* add scrolling + remove company name ([1ab8e58](https://github.com/bart-sysf/pf-crit-fumble/commit/1ab8e586b3cad5825f9dbad65224ee8b4283c60e))
+
 ## [1.0.7](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.6...v1.0.7) (2026-04-16)
 
 
