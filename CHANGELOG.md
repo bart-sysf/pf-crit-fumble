@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.5...v1.0.6) (2026-04-16)
+
+
+### Bug Fixes
+
+* remove nginx ([2b31aa5](https://github.com/bart-sysf/pf-crit-fumble/commit/2b31aa5bf1f6f20039f476ee20444817fafc826e))
+
 ## [1.0.5](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.4...v1.0.5) (2026-04-16)
 
 
