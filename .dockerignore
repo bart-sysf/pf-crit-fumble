@@ -1,0 +1,6 @@
+# Only dist/, package files, and lockfile are needed
+*
+!dist
+!package.json
+!pnpm-lock.yaml
+!pnpm-workspace.yaml

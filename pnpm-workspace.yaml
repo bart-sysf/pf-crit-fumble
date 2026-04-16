@@ -1,0 +1,11 @@
+ignoredBuiltDependencies:
+  - sharp
+
+minimumReleaseAge: 2880
+
+onlyBuiltDependencies:
+  - esbuild
+
+strictDepBuilds: true
+
+trustPolicy: no-downgrade

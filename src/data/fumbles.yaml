@@ -1,0 +1,54 @@
+# Fumble Cards - Pathfinder 1e
+# Each entry needs: title, type (Bludgeoning|Piercing|Slashing|Bomb/Spell), effect
+
+# --- Bludgeoning ---
+- title: "Wild Swing"
+  type: "Bludgeoning"
+  effect: "You overextend and provoke an attack of opportunity from the target."
+
+- title: "Numbed Hands"
+  type: "Bludgeoning"
+  effect: "The impact jars your hands. You drop your weapon in your square."
+
+- title: "Off Balance"
+  type: "Bludgeoning"
+  effect: "You stumble. You are flat-footed until the start of your next turn."
+
+# --- Piercing ---
+- title: "Stuck Weapon"
+  type: "Piercing"
+  effect: "Your weapon gets stuck in a nearby surface. DC 12 Strength check as a move action to free it."
+
+- title: "Overcommit"
+  type: "Piercing"
+  effect: "You lunge too far. You fall prone in an adjacent square."
+
+- title: "Bent Point"
+  type: "Piercing"
+  effect: "Your weapon's point bends. It takes a -2 penalty on damage rolls until repaired."
+
+# --- Slashing ---
+- title: "Self Inflicted"
+  type: "Slashing"
+  effect: "You nick yourself. Take 1d4 damage."
+
+- title: "Broken Grip"
+  type: "Slashing"
+  effect: "Your weapon flies 1d4 squares in a random direction."
+
+- title: "Tangled Swing"
+  type: "Slashing"
+  effect: "You hit an ally adjacent to the target (if any) for normal damage. If none, you hit yourself for half damage."
+
+# --- Bomb/Spell ---
+- title: "Spell Fizzle"
+  type: "Bomb/Spell"
+  effect: "The spell or bomb misfires. The effect is wasted with no result."
+
+- title: "Arcane Backlash"
+  type: "Bomb/Spell"
+  effect: "Magical energy feeds back into you. Take 1d6 damage and are dazed for 1 round."
+
+- title: "Wild Magic"
+  type: "Bomb/Spell"
+  effect: "The spell targets a random creature within 30 feet (including allies and yourself)."
