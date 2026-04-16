@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.4...v1.0.5) (2026-04-16)
+
+
+### Bug Fixes
+
+* robots tag ([d3f53bd](https://github.com/bart-sysf/pf-crit-fumble/commit/d3f53bd7313d256b6b2d4908d19d7fcb9d519e26))
+
 ## [1.0.4](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.3...v1.0.4) (2026-04-16)
 
 
