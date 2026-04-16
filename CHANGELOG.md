@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.0...v1.0.1) (2026-04-16)
+
+
+### Bug Fixes
+
+* only dist ([cd22919](https://github.com/bart-sysf/pf-crit-fumble/commit/cd22919608449279b95e95df072897b157f10d28))
+
 # 1.0.0 (2026-04-16)
 
 
