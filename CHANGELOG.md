@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.1...v1.0.2) (2026-04-16)
+
+
+### Bug Fixes
+
+* nginx config ([da1a741](https://github.com/bart-sysf/pf-crit-fumble/commit/da1a741556e5cddeab5925316fb12b0a1b25aab2))
+
 ## [1.0.1](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.0...v1.0.1) (2026-04-16)
 
 
