@@ -1,5 +1,6 @@
 {
-  "name": "",
+  "name": "pf-crit-fumble",
+  "packageManager": "pnpm@10.24.0",
   "type": "module",
   "version": "0.0.1",
   "engines": {
