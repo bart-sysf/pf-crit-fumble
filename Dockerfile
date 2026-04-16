@@ -1,6 +1,11 @@
-FROM nginx:alpine as production
+FROM node:22-alpine
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY dist/ /usr/share/nginx/html/
+WORKDIR /app
 
+COPY dist/ ./dist/
+
+ENV HOST=0.0.0.0
+ENV PORT=8080
 EXPOSE 8080
+
+CMD ["node", "./dist/server/entry.mjs"]
