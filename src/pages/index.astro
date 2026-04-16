@@ -1,5 +1,9 @@
 ---
+import fs from 'node:fs';
+import yaml from 'js-yaml';
 
+const critData = yaml.load(fs.readFileSync('src/data/critical-hits.yaml', 'utf8')) as Array<{title: string; type: string; effect: string}>;
+const fumbleData = yaml.load(fs.readFileSync('src/data/fumbles.yaml', 'utf8')) as Array<{title: string; type: string; effect: string}>;
 ---
 
 <html lang="en">
@@ -9,9 +13,448 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Pathfinder Critical Hits & Fumbles</title>
+		<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<!-- Title Screen -->
+		<div id="screen-title" class="screen active">
+			<h1 class="app-title">Critical Hits &amp; Fumbles</h1>
+
+			<div class="deck-choice">
+				<button class="deck deck-crit" data-type="crit" aria-label="Draw Critical Hit">
+					<img src="/images/card-back-crit.png" alt="Critical Hit Deck" />
+					<span class="deck-label">Critical Hit</span>
+				</button>
+				<button class="deck deck-fumble" data-type="fumble" aria-label="Draw Fumble">
+					<img src="/images/card-back-fumble.png" alt="Fumble Deck" />
+					<span class="deck-label">Fumble</span>
+				</button>
+			</div>
+		</div>
+
+		<!-- Shuffle Animation Screen -->
+		<div id="screen-shuffle" class="screen">
+			<div class="shuffle-arena" id="shuffle-arena"></div>
+		</div>
+
+		<!-- Result Screen -->
+		<div id="screen-result" class="screen">
+			<h2 id="result-title" class="result-title"></h2>
+			<div class="weapon-grid">
+				<div class="weapon-card" data-weapon="Bludgeoning">
+					<div class="weapon-header">
+						<img src="/images/icon-bludgeoning.png" alt="Bludgeoning" class="weapon-icon" />
+						<div class="weapon-name">Bludgeoning</div>
+					</div>
+					<p class="card-effect-title"></p>
+					<p class="card-effect-text"></p>
+				</div>
+				<div class="weapon-card" data-weapon="Piercing">
+					<div class="weapon-header">
+						<img src="/images/icon-piercing.png" alt="Piercing" class="weapon-icon" />
+						<div class="weapon-name">Piercing</div>
+					</div>
+					<p class="card-effect-title"></p>
+					<p class="card-effect-text"></p>
+				</div>
+				<div class="weapon-card" data-weapon="Slashing">
+					<div class="weapon-header">
+						<img src="/images/icon-slashing.png" alt="Slashing" class="weapon-icon" />
+						<div class="weapon-name">Slashing</div>
+					</div>
+					<p class="card-effect-title"></p>
+					<p class="card-effect-text"></p>
+				</div>
+				<div class="weapon-card" data-weapon="Bomb/Spell">
+					<div class="weapon-header">
+						<img src="/images/icon-bomb-spell.png" alt="Bomb/Spell" class="weapon-icon" />
+						<div class="weapon-name">Bomb/Spell</div>
+					</div>
+					<p class="card-effect-title"></p>
+					<p class="card-effect-text"></p>
+				</div>
+			</div>
+			<button id="btn-back" class="btn-back">Draw Again</button>
+		</div>
+
+		<script define:vars={{ critData, fumbleData }}>
+			const data = { crit: critData, fumble: fumbleData };
+
+			function pickRandom(arr) {
+				return arr[Math.floor(Math.random() * arr.length)];
+			}
+
+			function showScreen(id) {
+				document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+				document.getElementById(id).classList.add('active');
+			}
+
+			function runShuffleAnimation(type) {
+				const arena = document.getElementById('shuffle-arena');
+				const imgSrc = type === 'crit' ? '/images/card-back-crit.png' : '/images/card-back-fumble.png';
+				const CARD_COUNT = 10;
+				const CARD_W = 120;
+				const CARD_H = 168;
+
+				arena.innerHTML = '';
+
+				// Create cards in a scattered pile
+				const cards = [];
+				for (let i = 0; i < CARD_COUNT; i++) {
+					const card = document.createElement('div');
+					card.className = 'anim-card';
+					card.style.width = `${CARD_W}px`;
+					card.style.height = `${CARD_H}px`;
+					card.style.zIndex = i;
+
+					const img = document.createElement('img');
+					img.src = imgSrc;
+					img.alt = '';
+					img.width = CARD_W;
+					img.height = CARD_H;
+					card.appendChild(img);
+
+					// Start stacked in center with slight offset
+					const offsetX = (Math.random() - 0.5) * 8;
+					const offsetY = (Math.random() - 0.5) * 8;
+					const rot = (Math.random() - 0.5) * 6;
+					card.style.transform = `translate(${offsetX}px, ${offsetY}px) rotate(${rot}deg)`;
+
+					arena.appendChild(card);
+					cards.push(card);
+				}
+
+				// Phase 1: Scatter outward in a circle (0-400ms)
+				requestAnimationFrame(() => {
+					cards.forEach((card, i) => {
+						const angle = (i / CARD_COUNT) * Math.PI * 2 + (Math.random() - 0.5) * 0.4;
+						const radius = 160 + Math.random() * 100;
+						const x = Math.cos(angle) * radius;
+						const y = Math.sin(angle) * radius;
+						const rot = (Math.random() - 0.5) * 40;
+						card.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+						card.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg)`;
+					});
+				});
+
+				// Phase 2: Rapid shuffle — cards orbit/swap (400-1600ms)
+				const shuffleInterval = setInterval(() => {
+					cards.forEach((card, i) => {
+						const angle = Math.random() * Math.PI * 2;
+						const radius = 100 + Math.random() * 140;
+						const x = Math.cos(angle) * radius;
+						const y = Math.sin(angle) * radius;
+						const rot = (Math.random() - 0.5) * 50;
+						card.style.transition = 'transform 0.25s cubic-bezier(0.23, 1, 0.32, 1)';
+						card.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg)`;
+						card.style.zIndex = Math.floor(Math.random() * CARD_COUNT);
+					});
+				}, 250);
+
+				// Phase 3: Collapse back to pile, chosen card rises (1600-2400ms)
+				setTimeout(() => {
+					clearInterval(shuffleInterval);
+					const chosenIdx = Math.floor(Math.random() * CARD_COUNT);
+
+					cards.forEach((card, i) => {
+						if (i === chosenIdx) {
+							// Chosen card rises up and scales
+							card.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease';
+							card.style.transform = 'translate(0, -60px) rotate(0deg) scale(1.15)';
+							card.style.zIndex = 100;
+							card.style.boxShadow = `0 16px 48px rgba(0,0,0,0.6), 0 0 30px ${borderColor}44`;
+						} else {
+							// Others collapse to a pile
+							const offsetX = (Math.random() - 0.5) * 10;
+							const offsetY = 20 + Math.random() * 10;
+							const rot = (Math.random() - 0.5) * 8;
+							card.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease';
+							card.style.transform = `translate(${offsetX}px, ${offsetY}px) rotate(${rot}deg) scale(0.9)`;
+							card.style.opacity = '0.4';
+						}
+					});
+				}, 1600);
+
+				// Phase 4: Flash the chosen card and transition to result
+				setTimeout(() => {
+					const chosenIdx = [...arena.children].findIndex(c => c.style.zIndex === '100');
+					const chosen = arena.children[chosenIdx] || arena.children[0];
+					chosen.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+					chosen.style.transform = 'translate(0, -60px) rotate(0deg) scale(1.3)';
+					chosen.style.opacity = '0';
+				}, 2300);
+			}
+
+			function drawCard(type) {
+				const pool = data[type];
+				const label = type === 'crit' ? 'Critical Hit' : 'Fumble';
+				const colorClass = type === 'crit' ? 'crit' : 'fumble';
+
+				showScreen('screen-shuffle');
+				runShuffleAnimation(type);
+
+				setTimeout(() => {
+					const resultTitle = document.getElementById('result-title');
+					resultTitle.textContent = label;
+					resultTitle.className = `result-title ${colorClass}`;
+
+					document.querySelectorAll('.weapon-card').forEach(card => {
+						const weapon = card.dataset.weapon;
+						const cardsForType = pool.filter(c => c.type === weapon);
+						const chosen = cardsForType.length > 0
+							? pickRandom(cardsForType)
+							: { title: 'No cards defined', effect: 'Add cards to the YAML file for this type.' };
+
+						card.className = `weapon-card ${colorClass}`;
+						card.querySelector('.card-effect-title').textContent = chosen.title;
+						card.querySelector('.card-effect-text').textContent = chosen.effect;
+					});
+
+					showScreen('screen-result');
+				}, 2600);
+			}
+
+			document.querySelectorAll('.deck').forEach(btn => {
+				btn.addEventListener('click', () => drawCard(btn.dataset.type));
+			});
+
+			document.getElementById('btn-back').addEventListener('click', () => {
+				showScreen('screen-title');
+			});
+		</script>
+
+		<style>
+			/* --- Reset & Base --- */
+			* { margin: 0; padding: 0; box-sizing: border-box; }
+
+			body {
+				font-family: 'Crimson Text', Georgia, serif;
+				background: #1a1a2e url('/images/bg.png') center center / cover no-repeat fixed;
+				color: #e0d8c8;
+				min-height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				overflow: hidden;
+			}
+
+			body::before {
+				content: '';
+				position: fixed;
+				inset: 0;
+				background: rgba(10, 10, 20, 0.65);
+				z-index: 0;
+			}
+
+			body > * {
+				position: relative;
+				z-index: 1;
+			}
+
+			.screen {
+				display: none;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				max-width: 800px;
+				padding: 2rem;
+				animation: fadeIn 0.4s ease;
+			}
+
+			.screen.active {
+				display: flex;
+			}
+
+			@keyframes fadeIn {
+				from { opacity: 0; transform: translateY(10px); }
+				to { opacity: 1; transform: translateY(0); }
+			}
+
+			/* --- Title Screen --- */
+			.app-title {
+				font-family: 'MedievalSharp', cursive;
+				font-size: clamp(1.4rem, 4vw, 2rem);
+				text-align: center;
+				color: #f0e6d2;
+				text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+				line-height: 1.3;
+				margin-bottom: 2rem;
+			}
+
+			.deck-choice {
+				display: flex;
+				gap: 2.5rem;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+
+			.deck {
+				background: none;
+				border: none;
+				cursor: pointer;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 0.75rem;
+				transition: transform 0.2s ease, filter 0.2s ease;
+			}
+
+			.deck:hover {
+				transform: translateY(-8px) scale(1.03);
+				filter: brightness(1.15);
+			}
+
+			.deck:active {
+				transform: translateY(-2px) scale(0.98);
+			}
+
+			.deck img {
+				width: 260px;
+				height: 364px;
+				border-radius: 12px;
+				box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+				object-fit: cover;
+			}
+
+			.deck-label {
+				font-family: 'MedievalSharp', cursive;
+				font-size: 1.3rem;
+				color: #f0e6d2;
+			}
+
+			/* --- Shuffle Screen --- */
+			.shuffle-arena {
+				position: relative;
+				width: 90vw;
+				height: 80vh;
+				max-width: 700px;
+				max-height: 600px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.anim-card {
+				position: absolute;
+				top: calc(50% - 84px);
+				left: calc(50% - 60px);
+				border-radius: 12px;
+				overflow: hidden;
+				box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+				will-change: transform, opacity;
+			}
+
+			.anim-card img {
+				display: block;
+				max-width: 100%;
+				max-height: 100%;
+				pointer-events: none;
+			}
+
+			/* --- Result Screen --- */
+			.result-title {
+				font-family: 'MedievalSharp', cursive;
+				font-size: 2.2rem;
+				margin-bottom: 1.5rem;
+				text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+			}
+
+			.result-title.crit { color: #4a90d9; }
+			.result-title.fumble { color: #d94a4a; }
+
+			.weapon-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 1.2rem;
+				width: 100%;
+				max-width: 800px;
+				margin-bottom: 1.5rem;
+			}
+
+			.weapon-card {
+				background: url('/images/effect-bg.png') center center / cover no-repeat;
+				border-radius: 12px;
+				padding: 2rem 2.5rem;
+				border: none;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+			}
+
+			.weapon-card.crit, .weapon-card.fumble { }
+
+			.weapon-header {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.weapon-icon {
+				width: 36px;
+				height: 36px;
+			}
+
+			.weapon-name {
+				font-size: 0.95rem;
+				color: #5a4a38;
+				font-style: italic;
+			}
+
+			.card-effect-title {
+				font-family: 'MedievalSharp', cursive;
+				font-size: 1.4rem;
+				color: #2a2018;
+				margin-bottom: 0.4rem;
+			}
+
+			.card-effect-text {
+				font-size: 1.05rem;
+				font-weight: 600;
+				line-height: 1.5;
+				color: #3a2a1a;
+			}
+
+			.btn-back {
+				font-family: 'MedievalSharp', cursive;
+				font-size: 1.2rem;
+				padding: 0.6rem 2rem;
+				background: #3a3a5c;
+				color: #f0e6d2;
+				border: 2px solid #5a5a8c;
+				border-radius: 8px;
+				cursor: pointer;
+				transition: background 0.2s, transform 0.2s;
+			}
+
+			.btn-back:hover {
+				background: #4a4a6c;
+				transform: translateY(-2px);
+			}
+
+			/* --- Responsive --- */
+			@media (max-width: 500px) {
+				.weapon-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.deck-choice {
+					gap: 1.5rem;
+				}
+
+				.deck img {
+					width: 180px;
+					height: 252px;
+				}
+
+				.shuffle-arena {
+					width: 100vw;
+					height: 70vh;
+				}
+			}
+		</style>
 	</body>
 </html>

@@ -1,0 +1,54 @@
+# Critical Hit Cards - Pathfinder 1e
+# Each entry needs: title, type (Bludgeoning|Piercing|Slashing|Bomb/Spell), effect
+
+# --- Bludgeoning ---
+- title: "Skull Crack"
+  type: "Bludgeoning"
+  effect: "Target is dazed for 1d4 rounds. DC 15 Fortitude save or be stunned for 1 round."
+
+- title: "Bone Breaker"
+  type: "Bludgeoning"
+  effect: "Target takes normal damage and 1d4 Strength damage."
+
+- title: "Rattling Blow"
+  type: "Bludgeoning"
+  effect: "Target is sickened for 1d6 rounds. No save."
+
+# --- Piercing ---
+- title: "Deep Puncture"
+  type: "Piercing"
+  effect: "Target bleeds for 1d6 damage per round for 3 rounds (DC 15 Heal to stop)."
+
+- title: "Organ Strike"
+  type: "Piercing"
+  effect: "Target takes normal damage and 1d4 Constitution damage."
+
+- title: "Pin Cushion"
+  type: "Piercing"
+  effect: "Weapon lodges in target. Target takes -2 penalty on attack rolls until removed (move action, DC 12 Heal)."
+
+# --- Slashing ---
+- title: "Severed Tendon"
+  type: "Slashing"
+  effect: "Target's movement speed is halved until healed. DC 20 Heal check or magical healing to restore."
+
+- title: "Gushing Wound"
+  type: "Slashing"
+  effect: "Target bleeds for 2d4 damage per round (DC 15 Heal to stop)."
+
+- title: "Deep Gash"
+  type: "Slashing"
+  effect: "Target takes normal damage and is staggered for 1 round."
+
+# --- Bomb/Spell ---
+- title: "Arcane Feedback"
+  type: "Bomb/Spell"
+  effect: "Target must make a DC 15 Will save or lose their highest remaining spell slot."
+
+- title: "Elemental Surge"
+  type: "Bomb/Spell"
+  effect: "Deal an additional 2d6 damage of the same energy type."
+
+- title: "Reality Warp"
+  type: "Bomb/Spell"
+  effect: "Target is confused for 1d4 rounds. DC 15 Will save negates."
