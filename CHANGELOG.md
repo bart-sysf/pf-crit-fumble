@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.6...v1.0.7) (2026-04-16)
+
+
+### Bug Fixes
+
+* as production ([8193cce](https://github.com/bart-sysf/pf-crit-fumble/commit/8193ccea1206edfc9c0881fa6ab707ed11956e44))
+
 ## [1.0.6](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.5...v1.0.6) (2026-04-16)
 
 
