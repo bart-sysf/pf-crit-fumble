@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.8...v1.1.0) (2026-04-19)
+
+
+### Bug Fixes
+
+* correct PF1e bleed mechanics and splash damage on critical hit cards ([462dbe9](https://github.com/bart-sysf/pf-crit-fumble/commit/462dbe9ed9472930a883518a2dc538ea16cb4bd1))
+* make crit cards deal significant extra damage with minimal saves ([722b811](https://github.com/bart-sysf/pf-crit-fumble/commit/722b811a2c05eecd7278f77c69a5609db5fcebb5))
+
+
+### Features
+
+* add 8 critical hit and fumble cards per damage type (PF1e) ([8bbff3d](https://github.com/bart-sysf/pf-crit-fumble/commit/8bbff3d064fb4b2e44818b019f3d60de2dcf066f))
+
 ## [1.0.8](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.7...v1.0.8) (2026-04-16)
 
 
