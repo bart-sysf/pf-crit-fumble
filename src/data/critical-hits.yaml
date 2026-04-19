@@ -14,6 +14,26 @@
   type: "Bludgeoning"
   effect: "Target is sickened for 1d6 rounds. No save."
 
+- title: "Shattered Ribs"
+  type: "Bludgeoning"
+  effect: "Target is staggered for 2 rounds. DC 15 Fortitude save negates the staggered condition."
+
+- title: "Kidney Blow"
+  type: "Bludgeoning"
+  effect: "Target is sickened for 1 minute and takes 1d4 Constitution damage. DC 15 Fortitude halves the ability damage."
+
+- title: "Concussive Strike"
+  type: "Bludgeoning"
+  effect: "Target is confused for 1 round. DC 15 Will save negates."
+
+- title: "Crippling Impact"
+  type: "Bludgeoning"
+  effect: "Target takes -2 on attack rolls and Dexterity-based checks for 1d4 rounds as a limb is badly bruised."
+
+- title: "Pulverizing Smash"
+  type: "Bludgeoning"
+  effect: "Target is pushed back 5 feet and knocked prone. DC 15 Reflex save negates the prone condition."
+
 # --- Piercing ---
 - title: "Deep Puncture"
   type: "Piercing"
@@ -26,6 +46,26 @@
 - title: "Pin Cushion"
   type: "Piercing"
   effect: "Weapon lodges in target. Target takes -2 penalty on attack rolls until removed (move action, DC 12 Heal)."
+
+- title: "Vital Strike"
+  type: "Piercing"
+  effect: "The blow strikes a vital spot. Deal one additional weapon damage die on top of the critical hit damage."
+
+- title: "Skewered Limb"
+  type: "Piercing"
+  effect: "Target's movement is halved and they take -2 on attack rolls for 1d4 rounds. DC 15 Fortitude save negates the movement penalty."
+
+- title: "Hemorrhage"
+  type: "Piercing"
+  effect: "Target bleeds for 1d4 Constitution damage per minute until a DC 15 Heal check or magical healing stops the bleeding."
+
+- title: "Lung Puncture"
+  type: "Piercing"
+  effect: "Target must succeed at a DC 15 Fortitude save or become fatigued for 1d6 rounds."
+
+- title: "Nerve Strike"
+  type: "Piercing"
+  effect: "A thrust pierces a nerve cluster. Target is paralyzed for 1 round. DC 15 Fortitude save negates."
 
 # --- Slashing ---
 - title: "Severed Tendon"
@@ -40,6 +80,26 @@
   type: "Slashing"
   effect: "Target takes normal damage and is staggered for 1 round."
 
+- title: "Ear Cleft"
+  type: "Slashing"
+  effect: "Target is deafened for 1d6 rounds. DC 15 Fortitude save negates."
+
+- title: "Hamstring"
+  type: "Slashing"
+  effect: "Target is entangled (half move, -2 Dexterity) for 1d4 rounds. DC 15 Fortitude save negates."
+
+- title: "Arterial Cut"
+  type: "Slashing"
+  effect: "Target bleeds for 1 HP per round and loses 1 Constitution per minute until the wound is bound (DC 12 Heal check)."
+
+- title: "Crippling Slash"
+  type: "Slashing"
+  effect: "Target takes 1d4 Dexterity damage as muscles and sinew are severed."
+
+- title: "Brutal Cleave"
+  type: "Slashing"
+  effect: "The strike rends armor as well as flesh. Target's armor bonus to AC is reduced by 1 (minimum 0) until repaired, and target is staggered for 1 round."
+
 # --- Bomb/Spell ---
 - title: "Arcane Feedback"
   type: "Bomb/Spell"
@@ -52,3 +112,23 @@
 - title: "Reality Warp"
   type: "Bomb/Spell"
   effect: "Target is confused for 1d4 rounds. DC 15 Will save negates."
+
+- title: "Arcane Explosion"
+  type: "Bomb/Spell"
+  effect: "The spell or bomb detonates with extra force. All creatures within 5 feet of the target take splash damage equal to the caster's level (Reflex DC 15 half)."
+
+- title: "Mind Shatter"
+  type: "Bomb/Spell"
+  effect: "Target must make a DC 15 Will save or be staggered for 1 round and take 1d4 Intelligence damage."
+
+- title: "Spell Burn"
+  type: "Bomb/Spell"
+  effect: "Target catches fire, taking 1d6 fire damage per round for 1d4 rounds. DC 15 Reflex save each round to extinguish."
+
+- title: "Gravity Well"
+  type: "Bomb/Spell"
+  effect: "Target is pulled 10 feet toward the caster and knocked prone. DC 15 Reflex save negates the movement."
+
+- title: "Unstable Magic"
+  type: "Bomb/Spell"
+  effect: "Target is afflicted by a random minor curse for 1d4 rounds (d6: 1–2 -2 to all saves, 3–4 sickened, 5–6 blinded). DC 15 Will save negates."
