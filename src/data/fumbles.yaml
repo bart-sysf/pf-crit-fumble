@@ -14,6 +14,26 @@
   type: "Bludgeoning"
   effect: "You stumble. You are flat-footed until the start of your next turn."
 
+- title: "Shoulder Strain"
+  type: "Bludgeoning"
+  effect: "You wrench your shoulder. Take 1d4 nonlethal damage and suffer -2 on attack rolls until the start of your next turn."
+
+- title: "Stumble Forward"
+  type: "Bludgeoning"
+  effect: "You lose your footing on the follow-through and fall prone in your current square."
+
+- title: "Gear Slip"
+  type: "Bludgeoning"
+  effect: "Your armor or shield (if any) shifts uncomfortably. Take -2 to AC until you spend a move action to readjust."
+
+- title: "Telegraphed Strike"
+  type: "Bludgeoning"
+  effect: "Your swing telegraphs so clearly that your target gains a +4 dodge bonus to AC against your next attack."
+
+- title: "Overswing"
+  type: "Bludgeoning"
+  effect: "You spin from the force of your swing. Any remaining attacks you make this turn are at -4."
+
 # --- Piercing ---
 - title: "Stuck Weapon"
   type: "Piercing"
@@ -26,6 +46,26 @@
 - title: "Bent Point"
   type: "Piercing"
   effect: "Your weapon's point bends. It takes a -2 penalty on damage rolls until repaired."
+
+- title: "Fumbled Grip"
+  type: "Piercing"
+  effect: "Your weapon rotates in your hand. You are at -2 on all attack rolls until you spend a move action to re-grip it."
+
+- title: "Lunged Too Far"
+  type: "Piercing"
+  effect: "You are off balance from the overextended thrust and are flat-footed against all attacks until the start of your next turn."
+
+- title: "Pierced Nothing"
+  type: "Piercing"
+  effect: "Your thrust meets only air. You stumble 5 feet in the direction of your attack (treat as a free 5-foot step)."
+
+- title: "Skid and Slide"
+  type: "Piercing"
+  effect: "You slip as you thrust. Make a DC 10 Reflex save or fall prone."
+
+- title: "Missed Vitals"
+  type: "Piercing"
+  effect: "Your weapon strikes at an awkward angle, dealing minimum possible damage instead of rolling."
 
 # --- Slashing ---
 - title: "Self Inflicted"
@@ -40,6 +80,26 @@
   type: "Slashing"
   effect: "You hit an ally adjacent to the target (if any) for normal damage. If none, you hit yourself for half damage."
 
+- title: "Blade Bounce"
+  type: "Slashing"
+  effect: "Your weapon deflects harmlessly off armor or bone. No damage is dealt on this attack."
+
+- title: "Unbalanced Stance"
+  type: "Slashing"
+  effect: "You are dangerously off balance. All adjacent enemies gain a flanking bonus against you until the start of your next turn."
+
+- title: "Weapon Snagged"
+  type: "Slashing"
+  effect: "Your blade catches in the target's clothing or equipment. DC 12 Strength check as a standard action to free it."
+
+- title: "Slipped Footing"
+  type: "Slashing"
+  effect: "You slip on the follow-through. Make a DC 12 Acrobatics check or fall prone."
+
+- title: "Deep Nick"
+  type: "Slashing"
+  effect: "You misjudge the swing and cut yourself badly. Take 1d6 damage and begin bleeding for 1 HP per round (DC 12 Heal to stop)."
+
 # --- Bomb/Spell ---
 - title: "Spell Fizzle"
   type: "Bomb/Spell"
@@ -52,3 +112,23 @@
 - title: "Wild Magic"
   type: "Bomb/Spell"
   effect: "The spell targets a random creature within 30 feet (including allies and yourself)."
+
+- title: "Misfire"
+  type: "Bomb/Spell"
+  effect: "The bomb or spell reverses trajectory and targets yourself instead of the intended target. Resolve the full effect against yourself."
+
+- title: "Magical Drain"
+  type: "Bomb/Spell"
+  effect: "The spell's energy drains your mind. Take 1d4 points of ability damage to your primary casting stat (Intelligence, Wisdom, or Charisma)."
+
+- title: "Volatile Discharge"
+  type: "Bomb/Spell"
+  effect: "Excess magical energy arcs to a random ally within 30 feet. Resolve the full effect against that ally instead."
+
+- title: "Burnout"
+  type: "Bomb/Spell"
+  effect: "The failed casting burns out your reserves. Lose your lowest remaining spell slot (or one bomb use) and become fatigued for 1 round."
+
+- title: "Feedback Loop"
+  type: "Bomb/Spell"
+  effect: "The spell's energy loops back through you. You are staggered for 1 round and take 1 point of ability damage to your casting stat."
