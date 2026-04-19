@@ -1,54 +1,135 @@
 # Critical Hit Cards - Pathfinder 1e
 # Each entry needs: title, type (Bludgeoning|Piercing|Slashing|Bomb/Spell), effect
+# Note: these cards REPLACE the normal critical hit multiplier damage.
 
 # --- Bludgeoning ---
 - title: "Skull Crack"
   type: "Bludgeoning"
-  effect: "Target is dazed for 1d4 rounds. DC 15 Fortitude save or be stunned for 1 round."
+  effect: "Deal 2d6 extra damage. Target is dazed for 1 round. No save."
 
 - title: "Bone Breaker"
   type: "Bludgeoning"
-  effect: "Target takes normal damage and 1d4 Strength damage."
+  effect: "Deal 1d6 extra damage and inflict 1d4 Strength damage. No save."
 
 - title: "Rattling Blow"
   type: "Bludgeoning"
-  effect: "Target is sickened for 1d6 rounds. No save."
+  effect: "Deal 1d8 extra damage. Target is sickened for 1d6 rounds. No save."
+
+- title: "Shattered Ribs"
+  type: "Bludgeoning"
+  effect: "Deal 1d6 extra damage. Target is staggered for 2 rounds. DC 15 Fortitude reduces duration to 1 round."
+
+- title: "Kidney Blow"
+  type: "Bludgeoning"
+  effect: "Deal 2d6 extra damage and inflict 1d4 Constitution damage. No save."
+
+- title: "Concussive Strike"
+  type: "Bludgeoning"
+  effect: "Deal 1d6 extra damage. Target is confused for 1 round. No save."
+
+- title: "Crippling Impact"
+  type: "Bludgeoning"
+  effect: "Deal 1d6 extra damage. Target suffers -4 on attack rolls and Dexterity-based checks for 1d4 rounds. No save."
+
+- title: "Pulverizing Smash"
+  type: "Bludgeoning"
+  effect: "Deal 1d8 extra damage. Target is pushed 10 feet and knocked prone. No save."
 
 # --- Piercing ---
 - title: "Deep Puncture"
   type: "Piercing"
-  effect: "Target bleeds for 1d6 damage per round for 3 rounds (DC 15 Heal to stop)."
+  effect: "Deal 1d6 extra damage. Target bleeds for 2d6 hit points per round until a DC 15 Heal check or magical healing stops it."
 
 - title: "Organ Strike"
   type: "Piercing"
-  effect: "Target takes normal damage and 1d4 Constitution damage."
+  effect: "Deal 1d6 extra damage and inflict 1d6 Constitution damage. No save."
 
 - title: "Pin Cushion"
   type: "Piercing"
-  effect: "Weapon lodges in target. Target takes -2 penalty on attack rolls until removed (move action, DC 12 Heal)."
+  effect: "Deal 2d6 extra damage. Weapon lodges in the wound; target takes -4 on attack rolls until removed (standard action, DC 15 Heal)."
+
+- title: "Vital Strike"
+  type: "Piercing"
+  effect: "The blow finds a perfect gap. Deal two additional weapon damage dice on top of all other damage."
+
+- title: "Skewered Limb"
+  type: "Piercing"
+  effect: "Deal 1d6 extra damage. Target's movement is reduced to 5 feet and they take -4 on attack rolls for 1d4 rounds. No save."
+
+- title: "Hemorrhage"
+  type: "Piercing"
+  effect: "Deal 1d6 extra damage. Target bleeds for 2d4 hit points per round until a DC 15 Heal check or magical healing stops it."
+
+- title: "Lung Puncture"
+  type: "Piercing"
+  effect: "Deal 2d6 extra damage. Target becomes fatigued for 1 minute. No save."
+
+- title: "Nerve Strike"
+  type: "Piercing"
+  effect: "Deal 1d6 extra damage. Target is paralyzed for 1 round. DC 15 Fortitude negates the paralysis only."
 
 # --- Slashing ---
 - title: "Severed Tendon"
   type: "Slashing"
-  effect: "Target's movement speed is halved until healed. DC 20 Heal check or magical healing to restore."
+  effect: "Deal 1d6 extra damage. Target's movement speed is reduced to 5 feet until a DC 20 Heal check or magical healing is applied."
 
 - title: "Gushing Wound"
   type: "Slashing"
-  effect: "Target bleeds for 2d4 damage per round (DC 15 Heal to stop)."
+  effect: "Deal 1d6 extra damage. Target bleeds for 2d6 hit points per round until a DC 15 Heal check or magical healing stops it."
 
 - title: "Deep Gash"
   type: "Slashing"
-  effect: "Target takes normal damage and is staggered for 1 round."
+  effect: "Deal 2d6 extra damage. Target is staggered for 1 round. No save."
+
+- title: "Ear Cleft"
+  type: "Slashing"
+  effect: "Deal 1d6 extra damage. Target is deafened until magical healing or a DC 20 Heal check is applied."
+
+- title: "Hamstring"
+  type: "Slashing"
+  effect: "Deal 1d6 extra damage. Target is entangled (half move, -4 Dexterity) for 1d4 rounds. No save."
+
+- title: "Arterial Cut"
+  type: "Slashing"
+  effect: "Deal 1d6 extra damage. Target bleeds for 1d8 hit points per round until a DC 15 Heal check or magical healing stops it."
+
+- title: "Crippling Slash"
+  type: "Slashing"
+  effect: "Deal 1d6 extra damage and inflict 1d6 Dexterity damage. No save."
+
+- title: "Brutal Cleave"
+  type: "Slashing"
+  effect: "Deal 2d8 extra damage. Target is staggered for 1 round. No save."
 
 # --- Bomb/Spell ---
 - title: "Arcane Feedback"
   type: "Bomb/Spell"
-  effect: "Target must make a DC 15 Will save or lose their highest remaining spell slot."
+  effect: "Deal 2d6 extra damage of the same energy type. Target loses their highest remaining spell slot. No save."
 
 - title: "Elemental Surge"
   type: "Bomb/Spell"
-  effect: "Deal an additional 2d6 damage of the same energy type."
+  effect: "Deal 4d6 extra damage of the same energy type. No save."
 
 - title: "Reality Warp"
   type: "Bomb/Spell"
-  effect: "Target is confused for 1d4 rounds. DC 15 Will save negates."
+  effect: "Deal 2d6 extra damage. Target is confused for 1d4 rounds. No save."
+
+- title: "Arcane Explosion"
+  type: "Bomb/Spell"
+  effect: "Deal 2d6 extra damage to the target. All other creatures within 10 feet also take 1d6 splash damage of the same type (Reflex DC 15 half)."
+
+- title: "Mind Shatter"
+  type: "Bomb/Spell"
+  effect: "Deal 2d6 extra damage and inflict 1d6 Intelligence damage. No save."
+
+- title: "Spell Burn"
+  type: "Bomb/Spell"
+  effect: "Deal 2d6 immediate extra damage. Target catches fire, taking 1d6 fire damage per round. DC 15 Reflex each round to extinguish."
+
+- title: "Gravity Well"
+  type: "Bomb/Spell"
+  effect: "Deal 2d6 extra damage. Target is pulled 10 feet toward the caster and knocked prone. No save."
+
+- title: "Unstable Magic"
+  type: "Bomb/Spell"
+  effect: "Deal 2d6 extra damage. Roll a d6 for a secondary effect (no save): 1–2 blinded for 1 round, 3–4 staggered for 1 round, 5–6 confused for 1 round."
