@@ -5,35 +5,35 @@
 # --- Bludgeoning ---
 - title: "Skull Crack"
   type: "Bludgeoning"
-  effect: "Deal 2d6 extra damage. Target is dazed for 1 round. No save."
+  effect: "Deal 2d6 extra damage. Target is dazed for 1 round."
 
 - title: "Bone Breaker"
   type: "Bludgeoning"
-  effect: "Deal 1d6 extra damage and inflict 1d4 Strength damage. No save."
+  effect: "Deal 1d6 extra damage and inflict 1d4 Str damage."
 
 - title: "Rattling Blow"
   type: "Bludgeoning"
-  effect: "Deal 1d8 extra damage. Target is sickened for 1d6 rounds. No save."
+  effect: "Deal 1d8 extra damage. Target is sickened for 1d6 rounds."
 
 - title: "Shattered Ribs"
   type: "Bludgeoning"
-  effect: "Deal 1d6 extra damage. Target is staggered for 2 rounds. DC 15 Fortitude reduces duration to 1 round."
+  effect: "Deal 1d6 extra damage. Target is staggered for 2 rounds. DC 15 Fortitude to reduce to 1 round."
 
 - title: "Kidney Blow"
   type: "Bludgeoning"
-  effect: "Deal 2d6 extra damage and inflict 1d4 Constitution damage. No save."
+  effect: "Deal 2d6 extra damage and inflict 1d4 Con damage."
 
 - title: "Concussive Strike"
   type: "Bludgeoning"
-  effect: "Deal 1d6 extra damage. Target is confused for 1 round. No save."
+  effect: "Deal 1d6 extra damage. Target is confused for 1 round."
 
 - title: "Crippling Impact"
   type: "Bludgeoning"
-  effect: "Deal 1d6 extra damage. Target suffers -4 on attack rolls and Dexterity-based checks for 1d4 rounds. No save."
+  effect: "Deal 1d6 extra damage. Target suffers -4 on attack rolls and Dex-based checks for 1d4 rounds."
 
 - title: "Pulverizing Smash"
   type: "Bludgeoning"
-  effect: "Deal 1d8 extra damage. Target is pushed 10 feet and knocked prone. No save."
+  effect: "Deal 1d8 extra damage. Target is pushed 10 feet and knocked prone."
 
 # --- Piercing ---
 - title: "Deep Puncture"
@@ -42,7 +42,7 @@
 
 - title: "Organ Strike"
   type: "Piercing"
-  effect: "Deal 1d6 extra damage and inflict 1d6 Constitution damage. No save."
+  effect: "Deal 1d6 extra damage and inflict 1d6 Con damage."
 
 - title: "Pin Cushion"
   type: "Piercing"
@@ -54,7 +54,7 @@
 
 - title: "Skewered Limb"
   type: "Piercing"
-  effect: "Deal 1d6 extra damage. Target's movement is reduced to 5 feet and they take -4 on attack rolls for 1d4 rounds. No save."
+  effect: "Deal 1d6 extra damage. Target's movement is reduced to 5 feet and they take -4 on attack rolls for 1d4 rounds."
 
 - title: "Hemorrhage"
   type: "Piercing"
@@ -62,11 +62,11 @@
 
 - title: "Lung Puncture"
   type: "Piercing"
-  effect: "Deal 2d6 extra damage. Target becomes fatigued for 1 minute. No save."
+  effect: "Deal 2d6 extra damage. Target becomes fatigued for 1 minute."
 
 - title: "Nerve Strike"
   type: "Piercing"
-  effect: "Deal 1d6 extra damage. Target is paralyzed for 1 round. DC 15 Fortitude negates the paralysis only."
+  effect: "Deal 1d6 extra damage. Target is paralyzed for 1 round. DC 15 Fortitude to negate paralysis."
 
 # --- Slashing ---
 - title: "Severed Tendon"
@@ -79,7 +79,7 @@
 
 - title: "Deep Gash"
   type: "Slashing"
-  effect: "Deal 2d6 extra damage. Target is staggered for 1 round. No save."
+  effect: "Deal 2d6 extra damage. Target is staggered for 1 round."
 
 - title: "Ear Cleft"
   type: "Slashing"
@@ -87,7 +87,7 @@
 
 - title: "Hamstring"
   type: "Slashing"
-  effect: "Deal 1d6 extra damage. Target is entangled (half move, -4 Dexterity) for 1d4 rounds. No save."
+  effect: "Deal 1d6 extra damage. Target is entangled (half move, -4 Dex) for 1d4 rounds."
 
 - title: "Arterial Cut"
   type: "Slashing"
@@ -95,24 +95,24 @@
 
 - title: "Crippling Slash"
   type: "Slashing"
-  effect: "Deal 1d6 extra damage and inflict 1d6 Dexterity damage. No save."
+  effect: "Deal 1d6 extra damage and inflict 1d6 Dex damage."
 
 - title: "Brutal Cleave"
   type: "Slashing"
-  effect: "Deal 2d8 extra damage. Target is staggered for 1 round. No save."
+  effect: "Deal 2d8 extra damage. Target is staggered for 1 round."
 
 # --- Bomb/Spell ---
 - title: "Arcane Feedback"
   type: "Bomb/Spell"
-  effect: "Deal 2d6 extra damage of the same energy type. Target loses their highest remaining spell slot. No save."
+  effect: "Deal 2d6 extra damage of the same energy type. Target loses their highest remaining spell slot."
 
 - title: "Elemental Surge"
   type: "Bomb/Spell"
-  effect: "Deal 4d6 extra damage of the same energy type. No save."
+  effect: "Deal 4d6 extra damage of the same energy type."
 
 - title: "Reality Warp"
   type: "Bomb/Spell"
-  effect: "Deal 2d6 extra damage. Target is confused for 1d4 rounds. No save."
+  effect: "Deal 2d6 extra damage. Target is confused for 1d4 rounds."
 
 - title: "Arcane Explosion"
   type: "Bomb/Spell"
@@ -120,7 +120,7 @@
 
 - title: "Mind Shatter"
   type: "Bomb/Spell"
-  effect: "Deal 2d6 extra damage and inflict 1d6 Intelligence damage. No save."
+  effect: "Deal 2d6 extra damage and inflict 1d6 Int damage."
 
 - title: "Spell Burn"
   type: "Bomb/Spell"
@@ -128,7 +128,7 @@
 
 - title: "Gravity Well"
   type: "Bomb/Spell"
-  effect: "Deal 2d6 extra damage. Target is pulled 10 feet toward the caster and knocked prone. No save."
+  effect: "Deal 2d6 extra damage. Target is pulled 10 feet toward the caster and knocked prone."
 
 - title: "Unstable Magic"
   type: "Bomb/Spell"

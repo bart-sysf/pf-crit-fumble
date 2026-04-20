@@ -8,7 +8,7 @@
 
 - title: "Numbed Hands"
   type: "Bludgeoning"
-  effect: "The impact jars your hands. You drop your weapon in your square."
+  effect: "The impact jars your hands. You drop your weapon in your square, picking it up requires a move action."
 
 - title: "Off Balance"
   type: "Bludgeoning"
@@ -37,7 +37,7 @@
 # --- Piercing ---
 - title: "Stuck Weapon"
   type: "Piercing"
-  effect: "Your weapon gets stuck in a nearby surface. DC 12 Strength check as a move action to free it."
+  effect: "Your weapon gets stuck in a nearby surface. DC 12 Str check as a move action to free it."
 
 - title: "Overcommit"
   type: "Piercing"
@@ -65,7 +65,7 @@
 
 - title: "Missed Vitals"
   type: "Piercing"
-  effect: "Your weapon strikes at an awkward angle, dealing minimum possible damage instead of rolling."
+  effect: "Your weapon strikes at an awkward angle, hitting your nearest ally for minimum damage (1)."
 
 # --- Slashing ---
 - title: "Self Inflicted"
@@ -82,7 +82,7 @@
 
 - title: "Blade Bounce"
   type: "Slashing"
-  effect: "Your weapon deflects harmlessly off armor or bone. No damage is dealt on this attack."
+  effect: "Your weapon deflects harmlessly off armor or bone. You drop your weapon in your square, picking it up requires a move action."
 
 - title: "Unbalanced Stance"
   type: "Slashing"
@@ -119,7 +119,7 @@
 
 - title: "Magical Drain"
   type: "Bomb/Spell"
-  effect: "The spell's energy drains your mind. Take 1d4 points of ability damage to your primary casting stat (Intelligence, Wisdom, or Charisma)."
+  effect: "The spell's energy drains your mind. Take 1d4 points of ability damage to your primary casting stat (Int, Wis, or Cha)."
 
 - title: "Volatile Discharge"
   type: "Bomb/Spell"
