@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.1.0...v1.1.1) (2026-04-20)
+
+
+### Bug Fixes
+
+* manually revise fx ([c08f64f](https://github.com/bart-sysf/pf-crit-fumble/commit/c08f64fef600c43e1d27f1799ba4584742069fdb))
+
 # [1.1.0](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.8...v1.1.0) (2026-04-19)
 
 
