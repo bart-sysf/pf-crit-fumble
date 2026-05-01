@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.2...v1.1.0) (2026-05-01)
+
+
+### Features
+
+* update dependencies and workflows + enable dependabot ([0064aed](https://github.com/bart-sysf/pf-crit-fumble/commit/0064aedb0907e732fc5244c668b8e6cd4d648252))
+
 ## [1.0.2](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.1...v1.0.2) (2026-04-29)
 
 ## [1.0.1](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.0...v1.0.1) (2026-04-29)
