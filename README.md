@@ -2,8 +2,8 @@
 
 [![Build & Deploy Project](https://github.com/bart-sysf/pf-crit-fumble/actions/workflows/builddeploy.yml/badge.svg)](https://github.com/bart-sysf/pf-crit-fumble/actions/workflows/builddeploy.yml)
 ![Astro](https://img.shields.io/badge/Astro-6.x-BC52EE?logo=astro&logoColor=white)
-![Node](https://img.shields.io/badge/Node-%3E%3D22.12-5FA04E?logo=node.js&logoColor=white)
-![pnpm](https://img.shields.io/badge/pnpm-10.24.0-F69220?logo=pnpm&logoColor=white)
+![Node](https://img.shields.io/badge/Node-%3E%3D25.0-5FA04E?logo=node.js&logoColor=white)
+![pnpm](https://img.shields.io/badge/pnpm-10.33.2-F69220?logo=pnpm&logoColor=white)
 
 Step into the dice-lit tavern and draw a fate from the deck: this app is a small Pathfinder-flavored web companion for rolling up dramatic **critical hits** and miserable **fumbles**. It is built with **Astro**, dressed with custom fantasy art, and driven mostly by editable YAML data so the rules text is easy to expand.
 
@@ -29,8 +29,8 @@ If you want your own copy, run it locally or deploy it from this repository.
 
 ### Requirements
 
-- Node `>=22.12.0`
-- `pnpm` `10.24.0`
+- Node `>=25.0.0`
+- `pnpm` `10.33.2`
 
 ### Commands
 

@@ -2,7 +2,7 @@
 
 ## Build and validation commands
 
-- Use `pnpm` from the repository root. The project declares `pnpm@10.24.0` and requires Node `>=22.12.0`.
+- Use `pnpm` from the repository root. The project declares `pnpm@10.33.2` and requires Node `>=25.0`.
 - Install dependencies with `pnpm install`.
 - Start local development with `pnpm dev`.
 - Build the site with `pnpm build`.
