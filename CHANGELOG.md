@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.1.0...v1.1.1) (2026-05-01)
+
+
+### Bug Fixes
+
+* re-enable docker buildx ([e02512d](https://github.com/bart-sysf/pf-crit-fumble/commit/e02512d1996a82686918f902b05d0367e0df8bac))
+
 # [1.1.0](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.0.2...v1.1.0) (2026-05-01)
 
 
