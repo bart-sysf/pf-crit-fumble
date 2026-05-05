@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.1.2...v1.2.0) (2026-05-05)
+
+
+### Features
+
+* Ranged Crits / Fumbles ([#6](https://github.com/bart-sysf/pf-crit-fumble/issues/6)) ([4702c12](https://github.com/bart-sysf/pf-crit-fumble/commit/4702c1208eff1f28883c0e5e519294a5b5ecc975))
+
 ## [1.1.2](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.1.1...v1.1.2) (2026-05-01)
 
 ## [1.1.1](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.1.0...v1.1.1) (2026-05-01)
