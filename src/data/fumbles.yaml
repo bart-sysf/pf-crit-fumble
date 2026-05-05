@@ -132,3 +132,20 @@
 - title: "Feedback Loop"
   type: "Bomb/Spell"
   effect: "The spell's energy loops back through you. You are staggered for 1 round and take 1 point of ability damage to your casting stat."
+
+# --- Ranged ---
+- title: "Wild Shot"
+  type: "Ranged"
+  effect: "Attack misses and targets a random creature within range (including allies)"
+
+- title: "String Snap / Misfire"
+  type: "Ranged"
+  effect: "Your weapon malfunctions."
+  
+- title: "Overextended Aim"
+  type: "Ranged"
+  effect: "You lose your stance trying to line up the shot. You are flat-footed until your next turn"
+  
+- title: "Self-Obstruction"
+  type: "Ranged"
+  effect: "Something gets in your way at the worst moment. –2 penalty to your next attack"

@@ -133,3 +133,24 @@
 - title: "Unstable Magic"
   type: "Bomb/Spell"
   effect: "Deal 2d6 extra damage. Roll a d6 for a secondary effect (no save): 1–2 blinded for 1 round, 3–4 staggered for 1 round, 5–6 confused for 1 round."
+
+# --- Ranged ---
+- title: "Pinning Shot"
+  type: "Ranged"
+  effect: "Target is immobilized until they spend an action (or succeed on a Strength check) to break free."
+
+- title: "Vital Strike"
+  type: "Ranged"
+  effect: "You hit a critical weak point. Deal normal crit damage + 1d6 bleed"
+  
+- title: "Disarming Shot"
+  type: "Ranged"
+  effect: "You shoot with such precision such that the target drops their weapon."
+  
+- title: "Through-and-Through"
+  type: "Ranged"
+  effect: "The projectile passes through the target and hits the target behind it as well. (Make a second attack (same roll) against a creature directly behind them)"
+  
+- title: "Arrow to the knee"
+  type: "Ranged"
+  effect: "You strike your enemies knee. Targets movespeed is halved"
