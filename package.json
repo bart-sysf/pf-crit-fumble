@@ -1,6 +1,6 @@
 {
   "name": "pf-crit-fumble",
-  "packageManager": "pnpm@10.33.2",
+  "packageManager": "pnpm@11.1.2",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -13,8 +13,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/node": "^10.0.6",
-    "astro": "^6.1.10",
+    "@astrojs/node": "^10.1.0",
+    "astro": "^6.3.1",
     "js-yaml": "^4.1.1"
   }
 }

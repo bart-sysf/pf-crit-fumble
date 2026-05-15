@@ -56,3 +56,13 @@ jobs:
           tags: ghcr.io/bart-sysf/${{ github.event.repository.name }}:${{ steps.release.outputs.new_release_version }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - uses: aquasecurity/trivy-action@v0.36.0
+        if: steps.release.outputs.new_release_published == 'true'
+        with:
+          image-ref: ghcr.io/bart-sysf/${{ github.event.repository.name }}:${{ steps.release.outputs.new_release_version }}
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
