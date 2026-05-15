@@ -1,3 +1,5 @@
+## [1.2.2](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.2.1...v1.2.2) (2026-05-15)
+
 ## [1.2.1](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.2.0...v1.2.1) (2026-05-15)
 
 # [1.2.0](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.1.2...v1.2.0) (2026-05-05)
