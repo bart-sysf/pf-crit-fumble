@@ -31,6 +31,7 @@ const fumbleData = yaml.load(fs.readFileSync('src/data/fumbles.yaml', 'utf8')) a
 					<span class="deck-label">Fumble</span>
 				</button>
 			</div>
+			<a class="btn-instructions" href="/instructions">Instructions</a>
 		</div>
 
 		<!-- Shuffle Animation Screen -->
@@ -298,6 +299,7 @@ const fumbleData = yaml.load(fs.readFileSync('src/data/fumbles.yaml', 'utf8')) a
 				gap: 2.5rem;
 				justify-content: center;
 				flex-wrap: wrap;
+				margin-bottom: 1.5rem;
 			}
 
 			.deck {
@@ -332,6 +334,23 @@ const fumbleData = yaml.load(fs.readFileSync('src/data/fumbles.yaml', 'utf8')) a
 				font-family: 'MedievalSharp', cursive;
 				font-size: 1.3rem;
 				color: #f0e6d2;
+			}
+
+			.btn-instructions {
+				font-family: 'MedievalSharp', cursive;
+				font-size: 1.1rem;
+				padding: 0.55rem 1.6rem;
+				background: rgba(255, 255, 255, 0.18);
+				color: #f0e6d2;
+				border: 1px solid rgba(255, 255, 255, 0.45);
+				border-radius: 8px;
+				text-decoration: none;
+				transition: background 0.2s ease, transform 0.2s ease;
+			}
+
+			.btn-instructions:hover {
+				background: rgba(255, 255, 255, 0.3);
+				transform: translateY(-2px);
 			}
 
 			/* --- Shuffle Screen --- */

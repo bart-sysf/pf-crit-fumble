@@ -1,0 +1,163 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Instructions | Pathfinder Critical Hits & Fumbles</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <main class="instructions-page">
+            <h1>How To Use These Cards</h1>
+            <div class="overlay-panel">
+                <ul>
+                    <li>
+                        These cards are designed with Pathfinder 1 in mind, but
+                        can be easily adapted to other d20 systems. The cards
+                        are split into crit and fumble decks, and further
+                        divided by attack type. If your system does not
+                        differentiate between attack types, simply choose the
+                        card that best fits the situation.
+                    </li>
+                    <li>
+                        Determine who draws cards. For our table, named
+                        characters draw crit cards, all characters draw fumble
+                        cards.
+                    </li>
+                    <li>
+                        Roll your attack as normal and confirm the crit or
+                        fumble according to your table rules. Our table does not
+                        confirm.
+                    </li>
+                    <li>
+                        Pick the card that matches your attack type, for natural
+                        attacks, choose the damage type that best fits. If your
+                        weapon does multiple types of damage, you can choose.
+                    </li>
+                    <li>
+                        Subtract <kbd>x1</kbd> from regular crit damage and apply
+                        what the card says. Meaning <kbd>x2</kbd> => <kbd
+                            >x1</kbd
+                        > dmg + card, <kbd>x3</kbd> => <kbd>x2</kbd> dmg + card, <kbd
+                            >x4</kbd
+                        > => <kbd>x3</kbd> dmg + card, etc.
+                    </li>
+                    <li>
+                        When in doubt, GM ruling and campaign-specific house
+                        rules always take priority.
+                    </li>
+                    <li>
+                        Have fun! If you have a good suggestion for a card, or
+                        want to share how you use them at your table, reach out
+                        on <a href="https://github.com/bart-sysf/pf-crit-fumble"
+                            >GitHub</a
+                        >!
+                    </li>
+                </ul>
+            </div>
+            <a class="btn-home" href="/">Back To Decks</a>
+        </main>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Crimson Text", Georgia, serif;
+                background: #1a1a2e url("/images/bg.png") center center / cover
+                    no-repeat fixed;
+                color: #f0e6d2;
+                margin: 0;
+                min-height: 100vh;
+            }
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background: rgba(10, 10, 20, 0.65);
+                z-index: 0;
+            }
+
+            .instructions-page {
+                position: relative;
+                z-index: 1;
+                width: 100%;
+                max-width: 900px;
+                margin: 0 auto;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 2rem;
+                gap: 1.25rem;
+            }
+
+            h1 {
+                font-family: "MedievalSharp", cursive;
+                font-size: clamp(1.5rem, 4vw, 2.2rem);
+                text-align: center;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.55);
+            }
+
+            .overlay-panel {
+                width: min(100%, 760px);
+                background: rgba(255, 255, 255, 0.78);
+                border: 1px solid rgba(255, 255, 255, 0.92);
+                border-radius: 12px;
+                padding: 1.4rem 1.6rem;
+                color: #2d1f15;
+                box-shadow: 0 16px 34px rgba(0, 0, 0, 0.32);
+            }
+
+            ul {
+                padding-left: 1.25rem;
+                display: grid;
+                gap: 0.6rem;
+                font-size: 1.1rem;
+                line-height: 1.45;
+            }
+
+            .btn-home {
+                font-family: "MedievalSharp", cursive;
+                font-size: 1.05rem;
+                padding: 0.55rem 1.4rem;
+                background: rgba(255, 255, 255, 0.2);
+                color: #f0e6d2;
+                border: 1px solid rgba(255, 255, 255, 0.45);
+                border-radius: 8px;
+                text-decoration: none;
+                transition:
+                    background 0.2s ease,
+                    transform 0.2s ease;
+            }
+
+            .btn-home:hover {
+                background: rgba(255, 255, 255, 0.32);
+                transform: translateY(-2px);
+            }
+
+            @media (max-width: 600px) {
+                .instructions-page {
+                    padding: 1.2rem;
+                }
+
+                .overlay-panel {
+                    padding: 1rem 1rem 1rem 1.1rem;
+                }
+
+                ul {
+                    font-size: 1rem;
+                }
+            }
+        </style>
+    </body>
+</html>
