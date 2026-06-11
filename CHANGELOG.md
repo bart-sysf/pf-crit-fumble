@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.2.2...v1.2.3) (2026-06-11)
+
+
+### Bug Fixes
+
+* balance effects ([29ac156](https://github.com/bart-sysf/pf-crit-fumble/commit/29ac156948790e4ac890f663c5dbee8fd902d8d8))
+
 ## [1.2.2](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.2.1...v1.2.2) (2026-05-15)
 
 ## [1.2.1](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.2.0...v1.2.1) (2026-05-15)
