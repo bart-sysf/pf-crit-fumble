@@ -1,151 +1,152 @@
 # Fumble Cards - Pathfinder 1e
 # Each entry needs: title, type (Bludgeoning|Piercing|Slashing|Bomb/Spell), effect
+# Balance note: fumbles apply a small tactical setback, not a major shutdown.
 
 # --- Bludgeoning ---
 - title: "Wild Swing"
   type: "Bludgeoning"
-  effect: "You overextend and provoke an attack of opportunity from the target."
+  effect: "You overextend. The target gains +2 AC against your next attack before the end of your next turn."
 
 - title: "Numbed Hands"
   type: "Bludgeoning"
-  effect: "The impact jars your hands. You drop your weapon in your square, picking it up requires a move action."
+  effect: "The impact jars your hands. You take -2 on your next attack roll."
 
 - title: "Off Balance"
   type: "Bludgeoning"
-  effect: "You stumble. You are flat-footed until the start of your next turn."
+  effect: "You stumble. You take -1 AC until the start of your next turn."
 
 - title: "Shoulder Strain"
   type: "Bludgeoning"
-  effect: "You wrench your shoulder. Take 1d4 nonlethal damage and suffer -2 on attack rolls until the start of your next turn."
+  effect: "You wrench your shoulder. Take 1d4 nonlethal damage and -1 on attack rolls until the end of your next turn."
 
 - title: "Stumble Forward"
   type: "Bludgeoning"
-  effect: "You lose your footing on the follow-through and fall prone in your current square."
+  effect: "You lose your footing on the follow-through. You cannot take a 5-foot step until your next turn."
 
 - title: "Gear Slip"
   type: "Bludgeoning"
-  effect: "Your armor or shield (if any) shifts uncomfortably. Take -2 to AC until you spend a move action to readjust."
+  effect: "Your armor or shield shifts. Take -1 AC until the start of your next turn."
 
 - title: "Telegraphed Strike"
   type: "Bludgeoning"
-  effect: "Your swing telegraphs so clearly that your target gains a +4 dodge bonus to AC against your next attack."
+  effect: "Your swing telegraphs so clearly that your target gains a +2 dodge bonus to AC against your next attack."
 
 - title: "Overswing"
   type: "Bludgeoning"
-  effect: "You spin from the force of your swing. Any remaining attacks you make this turn are at -4."
+  effect: "You spin from the force of your swing. Any remaining attacks you make this turn are at -2."
 
 # --- Piercing ---
 - title: "Stuck Weapon"
   type: "Piercing"
-  effect: "Your weapon gets stuck in a nearby surface. DC 12 Str check as a move action to free it."
+  effect: "Your weapon catches on armor or terrain. You take -2 on your next attack roll."
 
 - title: "Overcommit"
   type: "Piercing"
-  effect: "You lunge too far. You fall prone in an adjacent square."
+  effect: "You lunge too far. You take -1 AC until the start of your next turn."
 
 - title: "Bent Point"
   type: "Piercing"
-  effect: "Your weapon's point bends. It takes a -2 penalty on damage rolls until repaired."
+  effect: "Your thrust lands poorly. Your next successful piercing hit deals -2 damage."
 
 - title: "Fumbled Grip"
   type: "Piercing"
-  effect: "Your weapon rotates in your hand. You are at -2 on all attack rolls until you spend a move action to re-grip it."
+  effect: "Your weapon rotates in your hand. You are at -2 on your next attack roll."
 
 - title: "Lunged Too Far"
   type: "Piercing"
-  effect: "You are off balance from the overextended thrust and are flat-footed against all attacks until the start of your next turn."
+  effect: "You are off balance from the thrust. You cannot make attacks of opportunity until the start of your next turn."
 
 - title: "Pierced Nothing"
   type: "Piercing"
-  effect: "Your thrust meets only air. You stumble 5 feet in the direction of your attack (treat as a free 5-foot step)."
+  effect: "Your thrust meets only air. Your movement speed is reduced by 10 feet until the end of your next turn."
 
 - title: "Skid and Slide"
   type: "Piercing"
-  effect: "You slip as you thrust. Make a DC 10 Reflex save or fall prone."
+  effect: "You slip as you thrust. Make a DC 10 Reflex save or take -2 AC until the start of your next turn."
 
 - title: "Missed Vitals"
   type: "Piercing"
-  effect: "Your weapon strikes at an awkward angle, hitting your nearest ally for minimum damage (1)."
+  effect: "Your weapon strikes at an awkward angle. Your next attack deals minimum weapon damage (before modifiers)."
 
 # --- Slashing ---
 - title: "Self Inflicted"
   type: "Slashing"
-  effect: "You nick yourself. Take 1d4 damage."
+  effect: "You nick yourself. Take 1 damage."
 
 - title: "Broken Grip"
   type: "Slashing"
-  effect: "Your weapon flies 1d4 squares in a random direction."
+  effect: "Your grip loosens. You take -2 on your next attack roll."
 
 - title: "Tangled Swing"
   type: "Slashing"
-  effect: "You hit an ally adjacent to the target (if any) for normal damage. If none, you hit yourself for half damage."
+  effect: "Your swing tangles your stance. You cannot make attacks of opportunity until the start of your next turn."
 
 - title: "Blade Bounce"
   type: "Slashing"
-  effect: "Your weapon deflects harmlessly off armor or bone. You drop your weapon in your square, picking it up requires a move action."
+  effect: "Your blade bounces wide. Your next successful hit deals -2 damage."
 
 - title: "Unbalanced Stance"
   type: "Slashing"
-  effect: "You are dangerously off balance. All adjacent enemies gain a flanking bonus against you until the start of your next turn."
+  effect: "You are off balance. Adjacent enemies gain +1 on attack rolls against you until the start of your next turn."
 
 - title: "Weapon Snagged"
   type: "Slashing"
-  effect: "Your blade catches in the target's clothing or equipment. DC 12 Strength check as a standard action to free it."
+  effect: "Your blade snags briefly. You take -2 on your next attack roll unless you spend a move action to reset your stance."
 
 - title: "Slipped Footing"
   type: "Slashing"
-  effect: "You slip on the follow-through. Make a DC 12 Acrobatics check or fall prone."
+  effect: "You slip on the follow-through. Make a DC 12 Acrobatics check or take -1 AC until the start of your next turn."
 
 - title: "Deep Nick"
   type: "Slashing"
-  effect: "You misjudge the swing and cut yourself badly. Take 1d6 damage and begin bleeding for 1 HP per round (DC 12 Heal to stop)."
+  effect: "You misjudge the swing and cut yourself. Take 1d4 damage."
 
 # --- Bomb/Spell ---
 - title: "Spell Fizzle"
   type: "Bomb/Spell"
-  effect: "The spell or bomb misfires. The effect is wasted with no result."
+  effect: "The spell or bomb fizzles. The effect is lost, but no additional penalty applies."
 
 - title: "Arcane Backlash"
   type: "Bomb/Spell"
-  effect: "Magical energy feeds back into you. Take 1d6 damage and are dazed for 1 round."
+  effect: "Magical energy feeds back into you. Take 1d4 force damage and -1 on concentration checks until end of your next turn."
 
 - title: "Wild Magic"
   type: "Bomb/Spell"
-  effect: "The spell targets a random creature within 30 feet (including allies and yourself)."
+  effect: "The spell sputters wildly. Your next Bomb/Spell attack before end of next turn takes -2 to hit."
 
 - title: "Misfire"
   type: "Bomb/Spell"
-  effect: "The bomb or spell reverses trajectory and targets yourself instead of the intended target. Resolve the full effect against yourself."
+  effect: "The effect detonates early. You take 1d4 damage of the spell or bomb type."
 
 - title: "Magical Drain"
   type: "Bomb/Spell"
-  effect: "The spell's energy drains your mind. Take 1d4 points of ability damage to your primary casting stat (Int, Wis, or Cha)."
+  effect: "The spell's energy drains your focus. You take -1 on concentration checks for 1 round."
 
 - title: "Volatile Discharge"
   type: "Bomb/Spell"
-  effect: "Excess magical energy arcs to a random ally within 30 feet. Resolve the full effect against that ally instead."
+  effect: "Excess energy lashes out. One adjacent creature of your choice takes 1 damage of the same type (or you take it if no one is adjacent)."
 
 - title: "Burnout"
   type: "Bomb/Spell"
-  effect: "The failed casting burns out your reserves. Lose your lowest remaining spell slot (or one bomb use) and become fatigued for 1 round."
+  effect: "The failed casting tires you. You are fatigued until the end of your next turn."
 
 - title: "Feedback Loop"
   type: "Bomb/Spell"
-  effect: "The spell's energy loops back through you. You are staggered for 1 round and take 1 point of ability damage to your casting stat."
+  effect: "The spell's energy loops back through you. Take 1d4 nonlethal damage and cannot make attacks of opportunity until your next turn."
 
 # --- Ranged ---
 - title: "Wild Shot"
   type: "Ranged"
-  effect: "Attack misses and targets a random creature within range (including allies)"
+  effect: "Your aim goes wide. You take -2 on your next ranged attack roll."
 
 - title: "String Snap / Misfire"
   type: "Ranged"
-  effect: "Your weapon malfunctions."
+  effect: "Your weapon malfunctions. Spend a move action before your next ranged attack or that attack takes -4."
   
 - title: "Overextended Aim"
   type: "Ranged"
-  effect: "You lose your stance trying to line up the shot. You are flat-footed until your next turn"
+  effect: "You lose your stance trying to line up the shot. You take -1 AC until the start of your next turn."
   
 - title: "Self-Obstruction"
   type: "Ranged"
-  effect: "Something gets in your way at the worst moment. –2 penalty to your next attack"
+  effect: "Something gets in your way at the worst moment. -2 penalty to your next attack."
