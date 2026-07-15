@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.2.4...v1.2.5) (2026-07-15)
+
+
+### Bug Fixes
+
+* update workflow ([e9b88ae](https://github.com/bart-sysf/pf-crit-fumble/commit/e9b88aea051fa92e8dd374566eaf87240f0f845c))
+
 ## [1.2.4](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.2.3...v1.2.4) (2026-07-15)
 
 
