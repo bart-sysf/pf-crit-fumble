@@ -5,32 +5,37 @@ on:
   push:
     branches:
       - 'main'
-      - 'dev-main'
   pull_request:
     branches:
       - 'main'
-      - 'dev-main'
 
 jobs:
   build-and-deploy:
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      contents: write
+      packages: write
+      issues: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
-      - uses: actions/setup-node@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version: 24
+          package-manager-cache: false
 
-      - uses: pnpm/action-setup@v6
+      - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6
         with:
           run_install: true
+          cache: false
 
       - name: Build
         run: pnpm build
 
-      - uses: cycjimmy/semantic-release-action@v6
+      - uses: cycjimmy/semantic-release-action@b12c8f6015dc215fe37bc154d4ad456dd3833c90 # v6.0.0
         id: release
         with:
           extra_plugins: |
@@ -38,17 +43,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: docker/setup-buildx-action@v4
+      - uses: docker/setup-buildx-action@bb05f3f5519dd87d3ba754cc423b652a5edd6d2c # v4
         if: steps.release.outputs.new_release_published == 'true'
 
-      - uses: docker/login-action@v4
+      - uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4
         if: steps.release.outputs.new_release_published == 'true'
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: docker/build-push-action@v7
+      - uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7
         if: steps.release.outputs.new_release_published == 'true'
         with:
           context: .
@@ -58,12 +63,177 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - uses: aquasecurity/trivy-action@v0.36.0
+      - name: Run Trivy scan
+        id: trivy
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25
         if: steps.release.outputs.new_release_published == 'true'
         with:
           image-ref: ghcr.io/bart-sysf/${{ github.event.repository.name }}:${{ steps.release.outputs.new_release_version }}
-          format: 'table'
-          exit-code: '1'
+          format: 'json'
+          output: 'trivy-results.json'
+          exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+
+      - name: Publish Trivy findings to release summary
+        if: steps.release.outputs.new_release_published == 'true'
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+        env:
+          APP_NAME: ${{ github.event.repository.name }}
+          IMAGE_REF: ghcr.io/bart-sysf/${{ github.event.repository.name }}:${{ steps.release.outputs.new_release_version }}
+          REPORT_FILE: trivy-results.json
+        with:
+          script: |
+            const fs = require('fs');
+
+            const reportPath = process.env.REPORT_FILE;
+            if (!fs.existsSync(reportPath)) {
+              await core.summary
+                .addHeading(`Trivy scan: ${process.env.APP_NAME}`, 3)
+                .addRaw(`Report file not found: ${reportPath}`)
+                .write();
+              return;
+            }
+
+            const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+            const vulnerabilities = [];
+
+            for (const result of report.Results || []) {
+              for (const vuln of result.Vulnerabilities || []) {
+                vulnerabilities.push(vuln);
+              }
+            }
+
+            const total = vulnerabilities.length;
+            const critical = vulnerabilities.filter(v => v.Severity === 'CRITICAL').length;
+            const high = vulnerabilities.filter(v => v.Severity === 'HIGH').length;
+
+            await core.summary
+              .addHeading(`Trivy scan: ${process.env.APP_NAME}`, 3)
+              .addRaw(`Image: ${process.env.IMAGE_REF}`)
+              .addBreak()
+              .addBreak()
+              .addTable([
+                [{ data: 'Total', header: true }, { data: 'Critical', header: true }, { data: 'High', header: true }],
+                [String(total), String(critical), String(high)]
+              ]);
+
+            if (total > 0) {
+              const topFindings = vulnerabilities.slice(0, 10).map(v => [
+                v.VulnerabilityID || 'unknown',
+                v.Severity || 'UNKNOWN',
+                v.PkgName || '-',
+                v.InstalledVersion || '-',
+                v.FixedVersion || '-'
+              ]);
+
+              await core.summary
+                .addRaw('Top findings (first 10):')
+                .addBreak()
+                .addTable([
+                  [
+                    { data: 'ID', header: true },
+                    { data: 'Severity', header: true },
+                    { data: 'Package', header: true },
+                    { data: 'Installed', header: true },
+                    { data: 'Fixed', header: true }
+                  ],
+                  ...topFindings
+                ]);
+            }
+
+            await core.summary.write();
+
+      - name: Create or update Trivy findings issue
+        if: steps.release.outputs.new_release_published == 'true'
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+        env:
+          APP_NAME: mysql-backup
+          IMAGE_REF: ghcr.io/bart-sysf/${{ github.event.repository.name }}:${{ steps.release.outputs.new_release_version }}
+          REPORT_FILE: trivy-results.json
+        with:
+          script: |
+            const fs = require('fs');
+
+            const reportPath = process.env.REPORT_FILE;
+            if (!fs.existsSync(reportPath)) {
+              core.warning(`Trivy report not found at ${reportPath}`);
+              return;
+            }
+
+            const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+            const vulnCount = (report.Results || []).reduce((sum, result) => {
+              return sum + ((result.Vulnerabilities || []).length);
+            }, 0);
+
+            if (vulnCount === 0) {
+              core.info('No Trivy findings detected.');
+              return;
+            }
+
+            const labelName = 'trivy-findings';
+            try {
+              await github.rest.issues.getLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: labelName
+              });
+            } catch {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: labelName,
+                color: 'd73a4a',
+                description: 'Automated Trivy vulnerability findings'
+              });
+            }
+
+            const title = `security: trivy findings for ${process.env.APP_NAME}`;
+            const runUrl = `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`;
+            const body = [
+              `Automated Trivy scan detected vulnerabilities for ${process.env.APP_NAME}.`,
+              '',
+              `- Image: ${process.env.IMAGE_REF}`,
+              `- Total findings: ${vulnCount}`,
+              `- Workflow run: ${runUrl}`,
+              '',
+              'The full scan report is stored in trivy-results.json in the workflow job workspace.'
+            ].join('\n');
+
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: labelName,
+              per_page: 100
+            });
+
+            const existing = issues.find(issue => issue.title === title);
+
+            if (existing) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                title,
+                body
+              });
+              await github.rest.issues.addAssignees({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                assignees: ['bart-sysf']
+              });
+              core.info(`Updated issue #${existing.number}`);
+            } else {
+              const { data: created } = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: [labelName],
+                assignees: ['bart-sysf']
+              });
+              core.info(`Created issue #${created.number}`);
+            }
