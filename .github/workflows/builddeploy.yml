@@ -149,7 +149,7 @@ jobs:
         if: steps.release.outputs.new_release_published == 'true'
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
         env:
-          APP_NAME: mysql-backup
+          APP_NAME: ${{ github.event.repository.name }}
           IMAGE_REF: ghcr.io/bart-sysf/${{ github.event.repository.name }}:${{ steps.release.outputs.new_release_version }}
           REPORT_FILE: trivy-results.json
         with:
