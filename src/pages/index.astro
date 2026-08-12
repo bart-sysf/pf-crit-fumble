@@ -1,9 +1,9 @@
 ---
 import fs from 'node:fs';
-import yaml from 'js-yaml';
+import { load } from 'js-yaml';
 
-const critData = yaml.load(fs.readFileSync('src/data/critical-hits.yaml', 'utf8')) as Array<{title: string; type: string; effect: string}>;
-const fumbleData = yaml.load(fs.readFileSync('src/data/fumbles.yaml', 'utf8')) as Array<{title: string; type: string; effect: string}>;
+const critData = load(fs.readFileSync('src/data/critical-hits.yaml', 'utf8')) as Array<{title: string; type: string; effect: string}>;
+const fumbleData = load(fs.readFileSync('src/data/fumbles.yaml', 'utf8')) as Array<{title: string; type: string; effect: string}>;
 ---
 
 <html lang="en">
