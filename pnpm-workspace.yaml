@@ -5,7 +5,7 @@ allowBuilds:
 ignoredBuiltDependencies:
   - sharp
 
-minimumReleaseAge: 2880
+minimumReleaseAge: 4320
 
 onlyBuiltDependencies:
   - esbuild
