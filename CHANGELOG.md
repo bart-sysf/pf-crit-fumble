@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.2.7...v1.3.0) (2026-09-10)
+
+
+### Bug Fixes
+
+* smaller boxes ([a92fda7](https://github.com/bart-sysf/pf-crit-fumble/commit/a92fda7a04a6adbe4906a090f31fe2afc3e1f1c5))
+
+
+### Features
+
+* initial character sheet ([e807fba](https://github.com/bart-sysf/pf-crit-fumble/commit/e807fba10c75c3a3fb74f723c62cc0b33acefb30))
+
 ## [1.2.7](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.2.6...v1.2.7) (2026-08-20)
 
 ## [1.2.6](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.2.5...v1.2.6) (2026-08-12)
