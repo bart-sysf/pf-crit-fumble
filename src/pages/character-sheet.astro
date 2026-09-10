@@ -148,6 +148,12 @@ const spellLevels = Array.from({ length: 10 }, (_, level) => level);
                                 </div>
                             ))}
                         </section>
+
+                        <section class="panel conditions-panel">
+                            <h2>Conditions &amp; Ongoing Effects</h2>
+                            <div class="condition-head"><span>Effect</span><span>Modifier</span><span>Duration / ends</span></div>
+                            {[1,2,3].map(() => <div class="condition-row"><span></span><span></span><span></span></div>)}
+                        </section>
                     </div>
 
                     <section class="panel skills-panel">
@@ -191,6 +197,12 @@ const spellLevels = Array.from({ length: 10 }, (_, level) => level);
                             {[1,2,3,4,5,6,7].map(() => (
                                 <div class="resource-row"><span></span><span></span><div class="bubbles">{[1,2,3,4,5,6,7,8].map(() => <i></i>)}</div></div>
                             ))}
+                        </section>
+
+                        <section class="panel consumables-panel">
+                            <h2>Consumables &amp; Charges</h2>
+                            <div class="consumable-head"><span>Item</span><span>Max</span><span>Remaining</span></div>
+                            {[1,2,3,4].map(() => <div class="consumable-row"><span></span><span></span><div class="bubbles">{[1,2,3,4,5,6].map(() => <i></i>)}</div></div>)}
                         </section>
 
                         <section class="panel feat-panel">
@@ -280,6 +292,7 @@ const spellLevels = Array.from({ length: 10 }, (_, level) => level);
                 <div class="spell-bottom">
                     <section class="panel"><h2>Metamagic, Components &amp; Spell Notes</h2><div class="ruled-space spell-note-lines"></div></section>
                     <section class="panel"><h2>Spellbooks, Implements &amp; Focus Items</h2><div class="ruled-space spell-note-lines"></div></section>
+                    <section class="panel"><h2>Spell-Like Abilities &amp; Magic Items</h2><div class="ruled-space spell-note-lines"></div></section>
                 </div>
                 <footer><span>Pathfinder 1e • Blank Character Sheet</span><span>3 / 3</span></footer>
             </article>
@@ -315,7 +328,7 @@ const spellLevels = Array.from({ length: 10 }, (_, level) => level);
     .compact-header > div:nth-child(2) { align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
     .header-write-line { height: 5mm; border-bottom: .25mm solid var(--line); }
     .fields-grid { display: grid; grid-template-columns: repeat(10, 1fr); border-top: .25mm solid var(--line); border-left: .25mm solid var(--line); margin-bottom: 2.4mm; }
-    .field { height: 8.3mm; position: relative; border-right: .25mm solid var(--line); border-bottom: .25mm solid var(--line); }
+    .field { height: 7mm; position: relative; border-right: .25mm solid var(--line); border-bottom: .25mm solid var(--line); }
     .field span, .line-field, .mini-stat span, .weapon-block span, .load-grid span, .wealth span { color: var(--muted); font-size: 6px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
     .field span { position: absolute; left: 1mm; bottom: .6mm; }
     .span-2 { grid-column: span 2; } .span-3 { grid-column: span 3; } .span-5 { grid-column: span 5; }
@@ -324,24 +337,24 @@ const spellLevels = Array.from({ length: 10 }, (_, level) => level);
     .panel { border: .35mm solid var(--ink); position: relative; }
     .panel h2 { height: 5.2mm; margin: 0; padding: 1.15mm 2mm 0; color: #fff; background: var(--ink); font-size: 8px; line-height: 1; letter-spacing: .12em; text-transform: uppercase; }
     .ability-head, .ability-row { display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); align-items: center; gap: 1.2mm; padding: 0 1.5mm; }
-    .ability-head { height: 4mm; color: var(--muted); font-size: 5.5px; font-weight: 700; text-align: center; text-transform: uppercase; }
-    .ability-row { min-height: 9mm; border-top: .2mm solid #aab2b7; }
+    .ability-head { height: 3.5mm; color: var(--muted); font-size: 5.5px; font-weight: 700; text-align: center; text-transform: uppercase; }
+    .ability-row { min-height: 7.5mm; border-top: .2mm solid #aab2b7; }
     .ability-name { display: grid; }
     .ability-name strong { font: 900 12px/1 Georgia, serif; }
     .ability-name small { color: var(--muted); font-size: 5.5px; text-transform: uppercase; }
     .write-box { display: block; height: 6mm; border: .25mm solid var(--line); background: white; }
-    .write-box.tall { height: 7mm; border-width: .5mm; }
-    .equation-head { height: 4mm; display: grid; grid-template-columns: 19mm repeat(6, 1fr); align-items: center; padding: 0 1.5mm; color: var(--muted); font-size: 5px; font-weight: 700; text-align: center; text-transform: uppercase; }
-    .equation-row { min-height: 8mm; display: grid; grid-template-columns: 17mm 8mm 2mm 7mm 2mm 7mm 2mm 7mm 2mm 7mm 2mm 7mm; align-items: center; justify-content: space-between; padding: 0 1.5mm; border-top: .2mm solid #aab2b7; }
+    .write-box.tall { height: 6mm; border-width: .5mm; }
+    .equation-head { height: 3.5mm; display: grid; grid-template-columns: 19mm repeat(6, 1fr); align-items: center; padding: 0 1.5mm; color: var(--muted); font-size: 5px; font-weight: 700; text-align: center; text-transform: uppercase; }
+    .equation-row { min-height: 7mm; display: grid; grid-template-columns: 17mm 8mm 2mm 7mm 2mm 7mm 2mm 7mm 2mm 7mm 2mm 7mm; align-items: center; justify-content: space-between; padding: 0 1.5mm; border-top: .2mm solid #aab2b7; }
     .equation-row strong { font: 700 8px Georgia, serif; text-transform: uppercase; }
     .equation-row i { color: var(--muted); font-style: normal; text-align: center; }
-    .equation-row .write-box { height: 5.5mm; }
+    .equation-row .write-box { height: 5mm; }
     .equation-row .total { border-width: .5mm; }
     .subfields { display: grid; border-top: .2mm solid var(--line); }
     .subfields.two { grid-template-columns: 1fr 1fr; } .subfields.three { grid-template-columns: repeat(3, 1fr); } .subfields.four { grid-template-columns: repeat(4, 1fr); }
     .subfields .line-field:not(:last-child) { border-right: .2mm solid var(--line); }
-    .line-field { min-height: 7mm; padding: .8mm 1.2mm; }
-    .combat-top { display: grid; grid-template-columns: 14mm repeat(4, 1fr); min-height: 12mm; border-bottom: .2mm solid var(--line); }
+    .line-field { min-height: 6mm; padding: .6mm 1.2mm; }
+    .combat-top { display: grid; grid-template-columns: 14mm repeat(4, 1fr); min-height: 10mm; border-bottom: .2mm solid var(--line); }
     .hero-box { display: grid; place-content: center; text-align: center; border-right: .5mm solid var(--ink); }
     .hero-box span { font: 900 14px/1 Georgia, serif; }
     .hero-box strong { margin-top: .5mm; color: var(--muted); font-size: 5px; text-transform: uppercase; }
@@ -357,6 +370,12 @@ const spellLevels = Array.from({ length: 10 }, (_, level) => level);
     .weapon-block > div:nth-child(n+5) { border-bottom: 0; }
     .weapon-block span { position: absolute; left: .8mm; bottom: .5mm; }
     .weapon-block .weapon-name { background: linear-gradient(90deg, var(--soft), white); }
+    .conditions-panel { height: 27mm; flex: none; }
+    .condition-head, .condition-row { display: grid; grid-template-columns: 1fr 28mm 34mm; }
+    .condition-head { height: 3.8mm; align-items: center; color: var(--muted); background: var(--soft); font-size: 5px; font-weight: 700; text-align: center; text-transform: uppercase; }
+    .condition-row { height: 6mm; border-top: .2mm solid var(--line); }
+    .condition-head > span, .condition-row > span { border-right: .2mm solid var(--line); }
+    .condition-head > span:last-child, .condition-row > span:last-child { border-right: 0; }
     .skills-panel { min-height: 0; }
     .skill-legend { position: absolute; top: 1.3mm; right: 1.5mm; display: flex; gap: 2mm; color: white; font-size: 5px; }
     .skill-head, .skill-row { display: grid; grid-template-columns: 5mm 1fr 8mm 9mm 9mm 9mm; align-items: center; padding: 0 1mm; }
@@ -378,7 +397,7 @@ const spellLevels = Array.from({ length: 10 }, (_, level) => level);
     .table-row > span { border-right: .2mm solid var(--line); }
     .table-row > span:last-child { border-right: 0; }
     .table-head { min-height: 4mm; align-items: center; color: var(--muted); background: var(--soft); font-size: 5.2px; font-weight: 700; text-align: center; text-transform: uppercase; }
-    .fill-row { min-height: 6mm; border-top: .2mm solid var(--line); }
+    .fill-row { min-height: 5mm; border-top: .2mm solid var(--line); }
     .armor-cols { grid-template-columns: 2.2fr repeat(5, 1fr); }
     .padded { border-top: .2mm solid var(--line); }
     .ruled-space { background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 5.6mm, #aeb6ba 5.7mm, #aeb6ba 5.9mm); }
@@ -386,15 +405,21 @@ const spellLevels = Array.from({ length: 10 }, (_, level) => level);
     .resource-panel { flex: none; }
     .resource-head, .resource-row { display: grid; grid-template-columns: 1fr 12mm 37mm; }
     .resource-head { height: 4mm; align-items: center; color: var(--muted); background: var(--soft); font-size: 5px; font-weight: 700; text-align: center; text-transform: uppercase; }
-    .resource-row { height: 7mm; border-top: .2mm solid var(--line); }
+    .resource-row { height: 6mm; border-top: .2mm solid var(--line); }
     .resource-row > * { border-right: .2mm solid var(--line); }
     .resource-row > *:last-child { border-right: 0; }
     .bubbles { display: flex; align-items: center; justify-content: space-evenly; }
     .bubbles i { width: 3mm; height: 3mm; border: .25mm solid var(--line); border-radius: 50%; }
+    .consumables-panel { flex: none; }
+    .consumable-head, .consumable-row { display: grid; grid-template-columns: 1fr 12mm 34mm; }
+    .consumable-head { height: 3.8mm; align-items: center; color: var(--muted); background: var(--soft); font-size: 5px; font-weight: 700; text-align: center; text-transform: uppercase; }
+    .consumable-row { height: 5.5mm; border-top: .2mm solid var(--line); }
+    .consumable-head > *, .consumable-row > * { border-right: .2mm solid var(--line); }
+    .consumable-head > *:last-child, .consumable-row > *:last-child { border-right: 0; }
     .feat-panel { flex: none; }
     .feat-head, .feat-row { display: grid; grid-template-columns: 1.1fr 22mm 1.7fr; }
     .feat-head { height: 4mm; align-items: center; color: var(--muted); background: var(--soft); font-size: 5px; font-weight: 700; text-align: center; text-transform: uppercase; }
-    .feat-row { height: 6mm; border-top: .2mm solid var(--line); }
+    .feat-row { height: 5.3mm; border-top: .2mm solid var(--line); }
     .feat-row > span, .feat-head > span { border-right: .2mm solid var(--line); }
     .feat-row > span:last-child, .feat-head > span:last-child { border-right: 0; }
     .companion-panel { flex: 1; }
@@ -405,7 +430,7 @@ const spellLevels = Array.from({ length: 10 }, (_, level) => level);
     .ability-lines { height: calc(100% - 9.2mm); background-image: linear-gradient(to right, transparent calc(35% - .1mm), var(--line) calc(35% - .1mm), var(--line) calc(35% + .1mm), transparent calc(35% + .1mm)), repeating-linear-gradient(to bottom, transparent 0, transparent 6.1mm, #aeb6ba 6.2mm, #aeb6ba 6.4mm); }
     .inventory-panel { flex: none; }
     .inventory-cols { grid-template-columns: 1fr 9mm 9mm 33%; }
-    .inventory-panel .fill-row { min-height: 5.6mm; }
+    .inventory-panel .fill-row { min-height: 5mm; }
     .load-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
     .load-grid div { height: 8mm; position: relative; border-top: .2mm solid var(--line); border-right: .2mm solid var(--line); }
     .load-grid div:nth-child(3n) { border-right: 0; }
@@ -438,7 +463,7 @@ const spellLevels = Array.from({ length: 10 }, (_, level) => level);
     .spell-row > span, .spell-list-head > span { border-right: .2mm solid var(--line); }
     .spell-row > span:last-child, .spell-list-head > span:last-child { border-right: 0; }
     .cast-bubbles { display: grid; place-items: center; color: var(--muted); font-size: 7px; white-space: nowrap; }
-    .spell-bottom { height: 34mm; flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 2.3mm; margin-top: 2.3mm; }
+    .spell-bottom { height: 34mm; flex: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.3mm; margin-top: 2.3mm; }
     .spell-note-lines { height: calc(100% - 5.2mm); }
 
     @page { size: A4 portrait; margin: 0; }
