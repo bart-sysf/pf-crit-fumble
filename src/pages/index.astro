@@ -31,7 +31,10 @@ const fumbleData = load(fs.readFileSync('src/data/fumbles.yaml', 'utf8')) as Arr
 					<span class="deck-label">Fumble</span>
 				</button>
 			</div>
-			<a class="btn-instructions" href="/instructions">Instructions</a>
+			<div class="title-actions">
+				<a class="btn-instructions" href="/instructions">Instructions</a>
+				<a class="btn-instructions" href="/character-sheet">Printable Character Sheet</a>
+			</div>
 		</div>
 
 		<!-- Shuffle Animation Screen -->
@@ -346,6 +349,13 @@ const fumbleData = load(fs.readFileSync('src/data/fumbles.yaml', 'utf8')) as Arr
 				border-radius: 8px;
 				text-decoration: none;
 				transition: background 0.2s ease, transform 0.2s ease;
+			}
+
+			.title-actions {
+				display: flex;
+				justify-content: center;
+				gap: 0.75rem;
+				flex-wrap: wrap;
 			}
 
 			.btn-instructions:hover {

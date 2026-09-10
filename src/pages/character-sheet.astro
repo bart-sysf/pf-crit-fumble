@@ -1,0 +1,459 @@
+---
+const skills = [
+    ['Acrobatics', 'DEX', ''],
+    ['Appraise', 'INT', ''],
+    ['Bluff', 'CHA', ''],
+    ['Climb', 'STR', ''],
+    ['Craft', 'INT', ''],
+    ['Diplomacy', 'CHA', ''],
+    ['Disable Device', 'DEX', 'T'],
+    ['Disguise', 'CHA', ''],
+    ['Escape Artist', 'DEX', ''],
+    ['Fly', 'DEX', ''],
+    ['Handle Animal', 'CHA', 'T'],
+    ['Heal', 'WIS', ''],
+    ['Intimidate', 'CHA', ''],
+    ['Knowledge (arcana)', 'INT', 'T'],
+    ['Knowledge (dungeoneering)', 'INT', 'T'],
+    ['Knowledge (engineering)', 'INT', 'T'],
+    ['Knowledge (geography)', 'INT', 'T'],
+    ['Knowledge (history)', 'INT', 'T'],
+    ['Knowledge (local)', 'INT', 'T'],
+    ['Knowledge (nature)', 'INT', 'T'],
+    ['Knowledge (nobility)', 'INT', 'T'],
+    ['Knowledge (planes)', 'INT', 'T'],
+    ['Knowledge (religion)', 'INT', 'T'],
+    ['Linguistics', 'INT', 'T'],
+    ['Perception', 'WIS', ''],
+    ['Perform', 'CHA', ''],
+    ['Profession', 'WIS', 'T'],
+    ['Ride', 'DEX', ''],
+    ['Sense Motive', 'WIS', ''],
+    ['Sleight of Hand', 'DEX', 'T'],
+    ['Spellcraft', 'INT', 'T'],
+    ['Stealth', 'DEX', ''],
+    ['Survival', 'WIS', ''],
+    ['Swim', 'STR', ''],
+    ['Use Magic Device', 'CHA', 'T'],
+] as const;
+
+const saves = ['Fortitude', 'Reflex', 'Will'];
+const abilities = [
+    ['STR', 'Strength'], ['DEX', 'Dexterity'], ['CON', 'Constitution'],
+    ['INT', 'Intelligence'], ['WIS', 'Wisdom'], ['CHA', 'Charisma'],
+];
+const spellLevels = Array.from({ length: 10 }, (_, level) => level);
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="description" content="A blank, print-ready Pathfinder First Edition character sheet." />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>Pathfinder 1e Character Sheet</title>
+    </head>
+    <body>
+        <nav class="toolbar" aria-label="Character sheet controls">
+            <a href="/">← Back</a>
+            <div>
+                <strong>Pathfinder 1e Character Sheet</strong>
+                <span>3-page A4 template</span>
+            </div>
+            <button type="button" id="print-sheet">Print / Save PDF</button>
+        </nav>
+
+        <main class="sheet-stack">
+            <!-- PAGE 1: CORE CHARACTER -->
+            <article class="sheet page-one">
+                <header class="sheet-header">
+                    <div class="mark" aria-hidden="true"><span>PF</span></div>
+                    <div>
+                        <p class="eyebrow">First Edition</p>
+                        <h1>Pathfinder Character Record</h1>
+                    </div>
+                    <p class="page-label">Core &amp; Combat</p>
+                </header>
+
+                <section class="identity fields-grid">
+                    <div class="field span-5"><span>Character name</span></div>
+                    <div class="field span-3"><span>Player</span></div>
+                    <div class="field span-2"><span>Campaign</span></div>
+                    <div class="field span-3"><span>Class &amp; level</span></div>
+                    <div class="field span-2"><span>Race</span></div>
+                    <div class="field span-2"><span>Alignment</span></div>
+                    <div class="field"><span>Deity</span></div>
+                    <div class="field"><span>XP</span></div>
+                    <div class="field"><span>Next level</span></div>
+                    <div class="field span-2"><span>Size</span></div>
+                    <div class="field span-2"><span>Age</span></div>
+                    <div class="field span-2"><span>Gender / pronouns</span></div>
+                    <div class="field span-2"><span>Height</span></div>
+                    <div class="field span-2"><span>Weight</span></div>
+                </section>
+
+                <div class="core-grid">
+                    <div class="left-core">
+                        <section class="panel ability-panel">
+                            <h2>Ability Scores</h2>
+                            <div class="ability-head"><span></span><span>Score</span><span>Mod</span><span>Temp</span><span>Temp mod</span></div>
+                            {abilities.map(([short, full]) => (
+                                <div class="ability-row">
+                                    <div class="ability-name"><strong>{short}</strong><small>{full}</small></div>
+                                    <span class="write-box tall"></span><span class="write-box"></span><span class="write-box"></span><span class="write-box"></span>
+                                </div>
+                            ))}
+                        </section>
+
+                        <section class="panel saving-panel">
+                            <h2>Saving Throws</h2>
+                            <div class="equation-head"><span></span><span>Total</span><span>Base</span><span>Ability</span><span>Magic</span><span>Misc</span><span>Temp</span></div>
+                            {saves.map((save) => (
+                                <div class="equation-row">
+                                    <strong>{save}</strong><span class="write-box total"></span><i>=</i><span class="write-box"></span><i>+</i><span class="write-box"></span><i>+</i><span class="write-box"></span><i>+</i><span class="write-box"></span><i>+</i><span class="write-box"></span>
+                                </div>
+                            ))}
+                            <div class="subfields two"><div class="line-field">Conditional modifiers</div><div class="line-field">Spell resistance</div></div>
+                        </section>
+
+                        <section class="panel combat-panel">
+                            <h2>Combat</h2>
+                            <div class="combat-top">
+                                <div class="hero-box"><span>HP</span><strong>Current</strong></div>
+                                <div class="mini-stat"><span>Total</span></div>
+                                <div class="mini-stat"><span>Nonlethal</span></div>
+                                <div class="mini-stat"><span>Temp</span></div>
+                                <div class="mini-stat"><span>DR</span></div>
+                            </div>
+                            <div class="combat-top">
+                                <div class="hero-box shield"><span>AC</span><strong>Total</strong></div>
+                                <div class="mini-stat"><span>Touch</span></div>
+                                <div class="mini-stat"><span>Flat-footed</span></div>
+                                <div class="mini-stat"><span>CMD</span></div>
+                                <div class="mini-stat"><span>Init</span></div>
+                            </div>
+                            <div class="subfields three"><div class="line-field">BAB</div><div class="line-field">CMB</div><div class="line-field">Speed / movement</div></div>
+                            <div class="subfields two"><div class="line-field">Armor class breakdown</div><div class="line-field">Initiative breakdown</div></div>
+                        </section>
+
+                        <section class="panel attacks-panel">
+                            <h2>Weapons &amp; Attacks</h2>
+                            {[1, 2, 3, 4].map((weapon) => (
+                                <div class="weapon-block">
+                                    <div class="weapon-name"><span>Weapon / attack {weapon}</span></div>
+                                    <div><span>Attack bonus</span></div><div><span>Damage</span></div><div><span>Critical</span></div>
+                                    <div><span>Type</span></div><div><span>Range</span></div><div><span>Ammo</span></div><div><span>Notes</span></div>
+                                </div>
+                            ))}
+                        </section>
+                    </div>
+
+                    <section class="panel skills-panel">
+                        <h2>Skills</h2>
+                        <div class="skill-legend"><span>★ class skill</span><span>T trained only</span></div>
+                        <div class="skill-head"><span>★</span><span>Skill</span><span>Ab.</span><span>Total</span><span>Ranks</span><span>Misc</span></div>
+                        {skills.map(([skill, ability, trained]) => (
+                            <div class="skill-row">
+                                <span class="check"></span><span class="skill-name">{skill}<em>{trained}</em></span><b>{ability}</b><span class="write-box"></span><span class="write-box"></span><span class="write-box"></span>
+                            </div>
+                        ))}
+                        <div class="skill-row custom"><span class="check"></span><span class="skill-name">Other</span><b></b><span class="write-box"></span><span class="write-box"></span><span class="write-box"></span></div>
+                        <div class="skill-row custom"><span class="check"></span><span class="skill-name">Other</span><b></b><span class="write-box"></span><span class="write-box"></span><span class="write-box"></span></div>
+                        <div class="skill-footer"><div class="line-field">Languages</div><div class="line-field">Favored class bonus</div></div>
+                    </section>
+                </div>
+                <footer><span>Pathfinder 1e • Blank Character Sheet</span><span>1 / 3</span></footer>
+            </article>
+
+            <!-- PAGE 2: FEATURES AND EQUIPMENT -->
+            <article class="sheet page-two">
+                <header class="sheet-header compact-header">
+                    <div class="mark" aria-hidden="true"><span>PF</span></div>
+                    <div><p class="eyebrow">Character name</p><div class="header-write-line"></div></div>
+                    <p class="page-label">Features &amp; Equipment</p>
+                </header>
+
+                <div class="page-two-grid">
+                    <div class="page-two-left">
+                        <section class="panel armor-panel">
+                            <h2>Armor &amp; Protection</h2>
+                            <div class="table-row table-head armor-cols"><span>Item</span><span>Bonus</span><span>Max Dex</span><span>Check</span><span>Spell fail</span><span>Weight</span></div>
+                            {[1,2,3,4].map(() => <div class="table-row armor-cols fill-row"><span></span><span></span><span></span><span></span><span></span><span></span></div>)}
+                            <div class="line-field padded">Armor / shield notes, resistances &amp; immunities</div>
+                            <div class="ruled-space small-lines"></div>
+                        </section>
+
+                        <section class="panel resource-panel">
+                            <h2>Resources, Channels &amp; Daily Abilities</h2>
+                            <div class="resource-head"><span>Resource / ability</span><span>Max</span><span>Used / remaining</span></div>
+                            {[1,2,3,4,5,6,7].map(() => (
+                                <div class="resource-row"><span></span><span></span><div class="bubbles">{[1,2,3,4,5,6,7,8].map(() => <i></i>)}</div></div>
+                            ))}
+                        </section>
+
+                        <section class="panel feat-panel">
+                            <h2>Feats</h2>
+                            <div class="feat-head"><span>Feat</span><span>Source / level</span><span>Summary</span></div>
+                            {[1,2,3,4,5,6,7,8,9,10,11].map(() => <div class="feat-row"><span></span><span></span><span></span></div>)}
+                        </section>
+
+                        <section class="panel companion-panel">
+                            <h2>Companion / Familiar / Mount</h2>
+                            <div class="subfields three"><div class="line-field">Name</div><div class="line-field">Type</div><div class="line-field">Level / HD</div></div>
+                            <div class="subfields four"><div class="line-field">HP</div><div class="line-field">AC</div><div class="line-field">Speed</div><div class="line-field">Initiative</div></div>
+                            <div class="line-field padded">Attacks, saves, abilities &amp; notes</div>
+                            <div class="ruled-space companion-lines"></div>
+                        </section>
+                    </div>
+
+                    <div class="page-two-right">
+                        <section class="panel ability-notes-panel">
+                            <h2>Class Features, Traits &amp; Special Abilities</h2>
+                            <div class="note-columns"><span>Feature / source</span><span>Effect, action &amp; duration</span></div>
+                            <div class="ruled-space ability-lines"></div>
+                        </section>
+
+                        <section class="panel inventory-panel">
+                            <h2>Inventory</h2>
+                            <div class="table-row table-head inventory-cols"><span>Item</span><span>Qty.</span><span>Wt.</span><span>Location / notes</span></div>
+                            {Array.from({length: 19}, () => <div class="table-row inventory-cols fill-row"><span></span><span></span><span></span><span></span></div>)}
+                            <div class="load-grid">
+                                <div><span>Light load</span></div><div><span>Medium</span></div><div><span>Heavy</span></div>
+                                <div><span>Lift over head</span></div><div><span>Lift off ground</span></div><div><span>Push / drag</span></div>
+                            </div>
+                            <div class="wealth"><strong>Wealth</strong><div><span>PP</span></div><div><span>GP</span></div><div><span>SP</span></div><div><span>CP</span></div><div><span>Other</span></div></div>
+                        </section>
+
+                        <section class="panel notes-panel">
+                            <h2>Notes, Contacts &amp; Goals</h2>
+                            <div class="ruled-space notes-lines"></div>
+                        </section>
+                    </div>
+                </div>
+                <footer><span>Pathfinder 1e • Blank Character Sheet</span><span>2 / 3</span></footer>
+            </article>
+
+            <!-- PAGE 3: SPELLCASTING -->
+            <article class="sheet page-three">
+                <header class="sheet-header compact-header">
+                    <div class="mark" aria-hidden="true"><span>PF</span></div>
+                    <div><p class="eyebrow">Character name</p><div class="header-write-line"></div></div>
+                    <p class="page-label">Spellcasting</p>
+                </header>
+
+                <section class="casting-summary panel">
+                    <h2>Spellcasting Profile</h2>
+                    <div class="casting-fields">
+                        <div class="line-field">Class / tradition</div><div class="line-field">Casting ability</div><div class="line-field">Caster level</div><div class="line-field">Concentration</div>
+                        <div class="line-field">Spell resistance check</div><div class="line-field">Domains / school / patron / bloodline</div><div class="line-field">Opposition schools</div><div class="line-field">Other modifiers</div>
+                    </div>
+                </section>
+
+                <section class="spell-stats panel">
+                    <h2>Spells per Day &amp; Difficulty Class</h2>
+                    <div class="spell-stat-grid stat-head"><span>Spell level</span>{spellLevels.map(level => <b>{level}</b>)}</div>
+                    <div class="spell-stat-grid"><span>Save DC</span>{spellLevels.map(() => <i></i>)}</div>
+                    <div class="spell-stat-grid"><span>Base spells / day</span>{spellLevels.map(() => <i></i>)}</div>
+                    <div class="spell-stat-grid"><span>Bonus spells</span>{spellLevels.map(() => <i></i>)}</div>
+                    <div class="spell-stat-grid"><span>Used</span>{spellLevels.map(() => <i></i>)}</div>
+                </section>
+
+                <div class="spell-columns">
+                    <section class="panel spell-list-panel">
+                        <h2>Prepared / Known Spells</h2>
+                        <div class="spell-list-head"><span>Lvl.</span><span>Spell</span><span>Prep.</span><span>Used</span><span>DC / notes</span></div>
+                        {Array.from({length: 27}, () => (
+                            <div class="spell-row"><span></span><span></span><span></span><span class="cast-bubbles">○ ○ ○</span><span></span></div>
+                        ))}
+                    </section>
+                    <section class="panel spell-list-panel">
+                        <h2>Prepared / Known Spells</h2>
+                        <div class="spell-list-head"><span>Lvl.</span><span>Spell</span><span>Prep.</span><span>Used</span><span>DC / notes</span></div>
+                        {Array.from({length: 27}, () => (
+                            <div class="spell-row"><span></span><span></span><span></span><span class="cast-bubbles">○ ○ ○</span><span></span></div>
+                        ))}
+                    </section>
+                </div>
+
+                <div class="spell-bottom">
+                    <section class="panel"><h2>Metamagic, Components &amp; Spell Notes</h2><div class="ruled-space spell-note-lines"></div></section>
+                    <section class="panel"><h2>Spellbooks, Implements &amp; Focus Items</h2><div class="ruled-space spell-note-lines"></div></section>
+                </div>
+                <footer><span>Pathfinder 1e • Blank Character Sheet</span><span>3 / 3</span></footer>
+            </article>
+        </main>
+
+        <script>
+            document.querySelector('#print-sheet')?.addEventListener('click', () => window.print());
+        </script>
+    </body>
+</html>
+
+<style is:global>
+    :root { --ink: #18222a; --muted: #53606a; --line: #72808a; --soft: #eef1f2; --paper: #fff; }
+    * { box-sizing: border-box; }
+    html { background: #29323a; }
+    body { margin: 0; color: var(--ink); font-family: Arial, Helvetica, sans-serif; font-size: 9px; }
+    .toolbar { position: sticky; top: 0; z-index: 10; min-height: 58px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; padding: 9px max(18px, calc((100vw - 210mm) / 2)); color: white; background: rgba(19, 28, 34, .96); box-shadow: 0 2px 16px #0007; }
+    .toolbar a { color: #e8ecee; text-decoration: none; justify-self: start; font-size: 13px; }
+    .toolbar div { display: grid; text-align: center; gap: 2px; }
+    .toolbar strong { font-size: 13px; letter-spacing: .03em; }
+    .toolbar span { color: #aeb8be; font-size: 10px; }
+    .toolbar button { justify-self: end; border: 1px solid #d6dde0; border-radius: 4px; padding: 8px 13px; color: #18222a; background: #f8fafb; font: 700 11px Arial, sans-serif; cursor: pointer; }
+    .toolbar button:hover { background: white; transform: translateY(-1px); }
+    .sheet-stack { display: grid; gap: 10mm; justify-content: center; padding: 10mm 0 18mm; }
+    .sheet { width: 200mm; height: 287mm; padding: 5mm 6mm 4mm; display: flex; flex-direction: column; overflow: hidden; background: var(--paper); box-shadow: 0 3mm 12mm #0008; }
+    .sheet-header { height: 15mm; flex: none; display: grid; grid-template-columns: 13mm 1fr auto; gap: 3mm; align-items: center; border-bottom: .8mm solid var(--ink); margin-bottom: 2.4mm; }
+    .mark { width: 11mm; height: 11mm; display: grid; place-items: center; border: .7mm solid var(--ink); transform: rotate(45deg); font-weight: 900; font-size: 10px; }
+    .mark span { transform: rotate(-45deg); }
+    .sheet-header h1 { margin: 0; font: 800 19px/1 Georgia, serif; letter-spacing: -.02em; text-transform: uppercase; }
+    .eyebrow { margin: 0 0 .7mm; color: var(--muted); font-size: 6.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .page-label { align-self: end; margin: 0 0 2mm; font-size: 7px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .compact-header { height: 13mm; }
+    .compact-header > div:nth-child(2) { align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+    .header-write-line { height: 5mm; border-bottom: .25mm solid var(--line); }
+    .fields-grid { display: grid; grid-template-columns: repeat(10, 1fr); border-top: .25mm solid var(--line); border-left: .25mm solid var(--line); margin-bottom: 2.4mm; }
+    .field { height: 8.3mm; position: relative; border-right: .25mm solid var(--line); border-bottom: .25mm solid var(--line); }
+    .field span, .line-field, .mini-stat span, .weapon-block span, .load-grid span, .wealth span { color: var(--muted); font-size: 6px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .field span { position: absolute; left: 1mm; bottom: .6mm; }
+    .span-2 { grid-column: span 2; } .span-3 { grid-column: span 3; } .span-5 { grid-column: span 5; }
+    .core-grid { display: grid; grid-template-columns: 58% 42%; gap: 2.4mm; min-height: 0; flex: 1; }
+    .left-core { display: flex; flex-direction: column; gap: 2.1mm; min-height: 0; }
+    .panel { border: .35mm solid var(--ink); position: relative; }
+    .panel h2 { height: 5.2mm; margin: 0; padding: 1.15mm 2mm 0; color: #fff; background: var(--ink); font-size: 8px; line-height: 1; letter-spacing: .12em; text-transform: uppercase; }
+    .ability-head, .ability-row { display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); align-items: center; gap: 1.2mm; padding: 0 1.5mm; }
+    .ability-head { height: 4mm; color: var(--muted); font-size: 5.5px; font-weight: 700; text-align: center; text-transform: uppercase; }
+    .ability-row { min-height: 9mm; border-top: .2mm solid #aab2b7; }
+    .ability-name { display: grid; }
+    .ability-name strong { font: 900 12px/1 Georgia, serif; }
+    .ability-name small { color: var(--muted); font-size: 5.5px; text-transform: uppercase; }
+    .write-box { display: block; height: 6mm; border: .25mm solid var(--line); background: white; }
+    .write-box.tall { height: 7mm; border-width: .5mm; }
+    .equation-head { height: 4mm; display: grid; grid-template-columns: 19mm repeat(6, 1fr); align-items: center; padding: 0 1.5mm; color: var(--muted); font-size: 5px; font-weight: 700; text-align: center; text-transform: uppercase; }
+    .equation-row { min-height: 8mm; display: grid; grid-template-columns: 17mm 8mm 2mm 7mm 2mm 7mm 2mm 7mm 2mm 7mm 2mm 7mm; align-items: center; justify-content: space-between; padding: 0 1.5mm; border-top: .2mm solid #aab2b7; }
+    .equation-row strong { font: 700 8px Georgia, serif; text-transform: uppercase; }
+    .equation-row i { color: var(--muted); font-style: normal; text-align: center; }
+    .equation-row .write-box { height: 5.5mm; }
+    .equation-row .total { border-width: .5mm; }
+    .subfields { display: grid; border-top: .2mm solid var(--line); }
+    .subfields.two { grid-template-columns: 1fr 1fr; } .subfields.three { grid-template-columns: repeat(3, 1fr); } .subfields.four { grid-template-columns: repeat(4, 1fr); }
+    .subfields .line-field:not(:last-child) { border-right: .2mm solid var(--line); }
+    .line-field { min-height: 7mm; padding: .8mm 1.2mm; }
+    .combat-top { display: grid; grid-template-columns: 14mm repeat(4, 1fr); min-height: 12mm; border-bottom: .2mm solid var(--line); }
+    .hero-box { display: grid; place-content: center; text-align: center; border-right: .5mm solid var(--ink); }
+    .hero-box span { font: 900 14px/1 Georgia, serif; }
+    .hero-box strong { margin-top: .5mm; color: var(--muted); font-size: 5px; text-transform: uppercase; }
+    .hero-box.shield { background: var(--soft); }
+    .mini-stat { border-right: .2mm solid var(--line); position: relative; }
+    .mini-stat:last-child { border-right: 0; }
+    .mini-stat span { position: absolute; left: 1mm; bottom: .7mm; }
+    .attacks-panel { flex: 1; }
+    .weapon-block { height: calc((100% - 5.2mm) / 4); min-height: 17mm; display: grid; grid-template-columns: 2fr 1fr 1fr .72fr; border-top: .2mm solid var(--line); }
+    .weapon-block:first-of-type { border-top: 0; }
+    .weapon-block > div { position: relative; border-right: .2mm solid var(--line); border-bottom: .2mm solid #b2b9bd; }
+    .weapon-block > div:nth-child(4n) { border-right: 0; }
+    .weapon-block > div:nth-child(n+5) { border-bottom: 0; }
+    .weapon-block span { position: absolute; left: .8mm; bottom: .5mm; }
+    .weapon-block .weapon-name { background: linear-gradient(90deg, var(--soft), white); }
+    .skills-panel { min-height: 0; }
+    .skill-legend { position: absolute; top: 1.3mm; right: 1.5mm; display: flex; gap: 2mm; color: white; font-size: 5px; }
+    .skill-head, .skill-row { display: grid; grid-template-columns: 5mm 1fr 8mm 9mm 9mm 9mm; align-items: center; padding: 0 1mm; }
+    .skill-head { height: 4mm; color: var(--muted); font-size: 5px; font-weight: 700; text-align: center; text-transform: uppercase; }
+    .skill-head span:nth-child(2) { text-align: left; }
+    .skill-row { height: calc((100% - 16.2mm) / 37); min-height: 4.6mm; border-top: .2mm solid #bec4c7; }
+    .skill-row .check { width: 2.5mm; height: 2.5mm; border: .2mm solid var(--line); justify-self: center; }
+    .skill-name { white-space: nowrap; font-size: 6.4px; }
+    .skill-name em { float: right; color: var(--muted); font-size: 5px; font-style: normal; font-weight: 800; }
+    .skill-row b { color: var(--muted); font-size: 5.5px; text-align: center; }
+    .skill-row .write-box { height: 3.4mm; margin-left: 1mm; border-width: .2mm; }
+    .skill-row.custom { min-height: 5mm; }
+    .skill-footer { display: grid; grid-template-columns: 1fr 1fr; border-top: .35mm solid var(--ink); }
+    .skill-footer > div:first-child { border-right: .2mm solid var(--line); }
+    footer { height: 4mm; flex: none; display: flex; justify-content: space-between; align-items: end; margin-top: 1.5mm; color: var(--muted); font-size: 5.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .page-two-grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 48% 52%; gap: 2.4mm; }
+    .page-two-left, .page-two-right { min-height: 0; display: flex; flex-direction: column; gap: 2.2mm; }
+    .table-row { display: grid; }
+    .table-row > span { border-right: .2mm solid var(--line); }
+    .table-row > span:last-child { border-right: 0; }
+    .table-head { min-height: 4mm; align-items: center; color: var(--muted); background: var(--soft); font-size: 5.2px; font-weight: 700; text-align: center; text-transform: uppercase; }
+    .fill-row { min-height: 6mm; border-top: .2mm solid var(--line); }
+    .armor-cols { grid-template-columns: 2.2fr repeat(5, 1fr); }
+    .padded { border-top: .2mm solid var(--line); }
+    .ruled-space { background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 5.6mm, #aeb6ba 5.7mm, #aeb6ba 5.9mm); }
+    .small-lines { height: 13mm; }
+    .resource-panel { flex: none; }
+    .resource-head, .resource-row { display: grid; grid-template-columns: 1fr 12mm 37mm; }
+    .resource-head { height: 4mm; align-items: center; color: var(--muted); background: var(--soft); font-size: 5px; font-weight: 700; text-align: center; text-transform: uppercase; }
+    .resource-row { height: 7mm; border-top: .2mm solid var(--line); }
+    .resource-row > * { border-right: .2mm solid var(--line); }
+    .resource-row > *:last-child { border-right: 0; }
+    .bubbles { display: flex; align-items: center; justify-content: space-evenly; }
+    .bubbles i { width: 3mm; height: 3mm; border: .25mm solid var(--line); border-radius: 50%; }
+    .feat-panel { flex: none; }
+    .feat-head, .feat-row { display: grid; grid-template-columns: 1.1fr 22mm 1.7fr; }
+    .feat-head { height: 4mm; align-items: center; color: var(--muted); background: var(--soft); font-size: 5px; font-weight: 700; text-align: center; text-transform: uppercase; }
+    .feat-row { height: 6mm; border-top: .2mm solid var(--line); }
+    .feat-row > span, .feat-head > span { border-right: .2mm solid var(--line); }
+    .feat-row > span:last-child, .feat-head > span:last-child { border-right: 0; }
+    .companion-panel { flex: 1; }
+    .companion-lines { height: calc(100% - 31mm); }
+    .ability-notes-panel { height: 90mm; flex: none; }
+    .note-columns { height: 4mm; display: grid; grid-template-columns: 35% 65%; align-items: center; color: var(--muted); background: var(--soft); font-size: 5px; font-weight: 700; text-align: center; text-transform: uppercase; }
+    .note-columns span:first-child { border-right: .2mm solid var(--line); }
+    .ability-lines { height: calc(100% - 9.2mm); background-image: linear-gradient(to right, transparent calc(35% - .1mm), var(--line) calc(35% - .1mm), var(--line) calc(35% + .1mm), transparent calc(35% + .1mm)), repeating-linear-gradient(to bottom, transparent 0, transparent 6.1mm, #aeb6ba 6.2mm, #aeb6ba 6.4mm); }
+    .inventory-panel { flex: none; }
+    .inventory-cols { grid-template-columns: 1fr 9mm 9mm 33%; }
+    .inventory-panel .fill-row { min-height: 5.6mm; }
+    .load-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .load-grid div { height: 8mm; position: relative; border-top: .2mm solid var(--line); border-right: .2mm solid var(--line); }
+    .load-grid div:nth-child(3n) { border-right: 0; }
+    .load-grid span { position: absolute; left: .8mm; bottom: .5mm; }
+    .wealth { height: 9mm; display: grid; grid-template-columns: 14mm repeat(5, 1fr); border-top: .4mm solid var(--ink); }
+    .wealth strong { display: grid; place-items: center; color: white; background: var(--ink); font-size: 6px; text-transform: uppercase; }
+    .wealth div { position: relative; border-right: .2mm solid var(--line); }
+    .wealth div:last-child { border-right: 0; }
+    .wealth span { position: absolute; left: .8mm; bottom: .5mm; }
+    .notes-panel { flex: 1; }
+    .notes-lines { height: calc(100% - 5.2mm); }
+    .casting-summary { flex: none; margin-bottom: 2.3mm; }
+    .casting-fields { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .casting-fields .line-field { border-right: .2mm solid var(--line); border-top: .2mm solid var(--line); }
+    .casting-fields .line-field:nth-child(4n) { border-right: 0; }
+    .casting-fields .line-field:nth-child(-n+4) { border-top: 0; }
+    .spell-stats { flex: none; margin-bottom: 2.3mm; }
+    .spell-stat-grid { display: grid; grid-template-columns: 29mm repeat(10, 1fr); min-height: 6mm; border-top: .2mm solid var(--line); }
+    .spell-stat-grid > * { display: grid; place-items: center; border-right: .2mm solid var(--line); }
+    .spell-stat-grid > *:last-child { border-right: 0; }
+    .spell-stat-grid span { padding-left: 1.2mm; justify-content: start; color: var(--muted); background: var(--soft); font-size: 5px; font-weight: 700; text-transform: uppercase; }
+    .spell-stat-grid i { min-height: 6mm; }
+    .spell-stat-grid.stat-head { min-height: 4.5mm; border-top: 0; font-size: 6px; }
+    .spell-stat-grid.stat-head b { background: #f7f8f8; }
+    .spell-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 2.3mm; flex: 1; min-height: 0; }
+    .spell-list-panel { min-height: 0; }
+    .spell-list-head, .spell-row { display: grid; grid-template-columns: 7mm 1fr 10mm 17mm 20mm; }
+    .spell-list-head { height: 4mm; align-items: center; color: var(--muted); background: var(--soft); font-size: 5px; font-weight: 700; text-align: center; text-transform: uppercase; }
+    .spell-row { height: calc((100% - 9.2mm) / 27); min-height: 5.2mm; border-top: .2mm solid var(--line); }
+    .spell-row > span, .spell-list-head > span { border-right: .2mm solid var(--line); }
+    .spell-row > span:last-child, .spell-list-head > span:last-child { border-right: 0; }
+    .cast-bubbles { display: grid; place-items: center; color: var(--muted); font-size: 7px; white-space: nowrap; }
+    .spell-bottom { height: 34mm; flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 2.3mm; margin-top: 2.3mm; }
+    .spell-note-lines { height: calc(100% - 5.2mm); }
+
+    @page { size: A4 portrait; margin: 0; }
+    @media print {
+        :root { --ink: #000; --muted: #333; --line: #666; --soft: #eee; }
+        html, body { width: auto; background: white; }
+        .toolbar { display: none; }
+        .sheet-stack { display: block; padding: 0; }
+        .sheet { width: 210mm; height: 297mm; margin: 0; padding: 3mm; box-shadow: none; break-after: page; page-break-after: always; }
+        .sheet:last-child { break-after: auto; page-break-after: auto; }
+        * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+    @media screen and (max-width: 850px) {
+        .sheet-stack { justify-content: start; overflow-x: auto; padding-left: 12px; padding-right: 12px; }
+        .toolbar { grid-template-columns: auto 1fr auto; padding: 9px 12px; }
+        .toolbar span { display: none; }
+    }
+</style>
