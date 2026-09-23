@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.3.0...v1.3.1) (2026-09-23)
+
+
+### Bug Fixes
+
+* update script + update packages and github actions ([8831d9d](https://github.com/bart-sysf/pf-crit-fumble/commit/8831d9d4b091d669f58f4e72ede943047f42fcd5))
+
 # [1.3.0](https://github.com/bart-sysf/pf-crit-fumble/compare/v1.2.7...v1.3.0) (2026-09-10)
 
 
