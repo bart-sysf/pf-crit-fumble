@@ -54,7 +54,8 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - uses: cycjimmy/semantic-release-action@v6.0.0
+      - if: github.event_name != 'pull_request'
+        uses: cycjimmy/semantic-release-action@v8.1.4
         id: release
         with:
           extra_plugins: |
