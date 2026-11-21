@@ -13,3 +13,6 @@ onlyBuiltDependencies:
 strictDepBuilds: true
 
 trustPolicy: no-downgrade
+
+minimumReleaseAgeStrict: true
+blockExoticSubdeps: true
