@@ -8,7 +8,7 @@ workflows:
         - 'actions/github-script@v9.0.0'
         - 'actions/setup-node@v7.1.0'
         - 'aquasecurity/trivy-action@v0.36.0'
-        - 'cycjimmy/semantic-release-action@v6.0.0'
+        - 'cycjimmy/semantic-release-action@v8.1.4'
         - 'docker/build-push-action@v7.4.0'
         - 'docker/login-action@v4.8.0'
         - 'docker/setup-buildx-action@v4.4.1'
@@ -60,9 +60,9 @@ dependencies:
         uses:
             - 'actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae'
             - 'aquasecurity/setup-trivy@3fb12ec12f41e471780db15c232d5dd185dcb514'
-    'cycjimmy/semantic-release-action@v6.0.0':
-        ref: 'v6.0.0'
-        commit: 'sha1-b12c8f6015dc215fe37bc154d4ad456dd3833c90'
+    'cycjimmy/semantic-release-action@v8.1.4':
+        ref: 'v8.1.4'
+        commit: 'sha1-ad51787758d9654d5a75150a89a6fa9b3ccef95e'
         owner_id: 19383787
         repo_id: 215775505
     'docker/build-push-action@v7.4.0':
